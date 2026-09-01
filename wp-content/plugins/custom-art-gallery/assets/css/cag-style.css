@@ -1,0 +1,84 @@
+.cag-gallery-container {
+    max-width: 1200px;
+    margin: 0 auto 40px auto;
+    text-align: center;
+    font-family: inherit;
+}
+.cag-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 6px;
+    background: #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+    height: 100%;
+}
+
+.cag-item img { display: block; width: 100%; object-fit: cover; }
+.cag-grid .cag-item img, .cag-slider .cag-item img { height: 350px; }
+.cag-ratio-main-custom .cag-item img { height: 100% !important; }
+.cag-item-aspect-ratio { width: 100%; display: block; }
+.cag-ratio-main-custom .cag-item-aspect-ratio { aspect-ratio: var(--cag-custom-main-ratio); }
+
+.cag-masonry .cag-item-aspect-ratio { aspect-ratio: auto; } 
+.cag-masonry .cag-item img { height: auto; }
+
+.cag-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+.cag-masonry { column-count: 3; column-gap: 20px; }
+.cag-masonry .cag-item { break-inside: avoid; margin-bottom: 20px; }
+
+@media (max-width: 900px) { .cag-masonry { column-count: 2; } }
+@media (max-width: 600px) { .cag-masonry { column-count: 1; } }
+
+.cag-caption {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: auto; 
+    max-width: 90%;
+    background: rgba(255, 255, 255, 0.85); 
+    padding: 20px;
+    border-radius: 8px;
+    box-sizing: border-box;
+    z-index: 10;
+    pointer-events: none; /* Let clicks pass through to the lightbox link */
+}
+
+.cag-caption h4, .cag-visible-caption, .cag-price { font-family: inherit; }
+.cag-caption h4 { margin: 0 0 5px 0; color: #7F5F30; font-weight: bold; line-height: 1.1; font-family: "Garamond Premier", Garamond, Georgia, serif; letter-spacing: -0.015em; }
+.cag-visible-caption { margin: 0 0 10px 0; color: #A17F55; line-height: 1.3; font-family: inherit; }
+.cag-price { margin: 0; color: #A17F55; font-weight: bold; font-family: inherit; }
+
+@media (max-width: 768px) {
+    .cag-cap-hover { opacity: 1; visibility: visible; }
+    .cag-caption h4 { font-size: 1.2rem; }
+    .cag-visible-caption { font-size: 1rem; }
+    .cag-price { font-size: 1.1rem; }
+}
+
+@media (min-width: 769px) {
+    .cag-cap-hover { opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
+    .cag-item:hover .cag-cap-hover { opacity: 1; visibility: visible; }
+    .cag-caption h4 { font-size: 3rem; margin-bottom: 10px; color: #7F5F30; font-family: "Garamond Premier", Garamond, Georgia, serif; font-weight: bold; letter-spacing: -0.015em; }
+    .cag-visible-caption { font-size: 2.8rem; margin-bottom: 15px; }
+    .cag-price { font-size: 2.9rem; }
+}
+
+.cag-item a.cag-lightbox { display: block; height: 100%; cursor: pointer; }
+
+/* Lightbox Modal Tweaks */
+.sl-caption { background: rgba(255, 255, 255, 0.95); padding: 25px; text-align: center; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); max-width: 80%; margin: 0 auto; }
+
+/* Thumbnail Slider */
+.cag-thumb-gallery { margin-top: 15px; }
+.cag-thumb-gallery .swiper-slide { opacity: 0.5; cursor: pointer; border-radius: 4px; overflow:hidden;}
+.cag-thumb-gallery .swiper-slide-thumb-active { opacity: 1; border: 2px solid #333; }
+.cag-thumb-aspect-ratio { display: block; width: 100%; }
+.cag-thumb-aspect-ratio img { height: 100%; width: 100%; object-fit: cover; }
+.swiper-button-next, .swiper-button-prev { color: #222; }
+.swiper-pagination-bullet-active { background: #222; }
