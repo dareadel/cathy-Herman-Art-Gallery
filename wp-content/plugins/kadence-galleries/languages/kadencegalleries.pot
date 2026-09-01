@@ -1,0 +1,434 @@
+# Copyright (C) 2023 Kadence WP
+# This file is distributed under the GPLv2 - http://www.gnu.org/licenses/gpl-2.0.html.
+msgid ""
+msgstr ""
+"Project-Id-Version: Kadence Galleries 1.2.7\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/kadence-galleries\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2023-12-04T18:03:34+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.7.1\n"
+"X-Domain: kadence-galleries\n"
+
+#. Plugin Name of the plugin
+msgid "Kadence Galleries"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "https://www.kadencewp.com/product/kadence-galleries/"
+msgstr ""
+
+#. Description of the plugin
+msgid "Plugin for managing galleries."
+msgstr ""
+
+#. Author of the plugin
+msgid "Kadence WP"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://www.kadencewp.com/"
+msgstr ""
+
+#: admin/admin_options.php:28
+msgid "Settings"
+msgstr ""
+
+#: admin/admin_options.php:29
+msgid "Kadence Galleries Settings"
+msgstr ""
+
+#: admin/admin_options.php:47
+msgid "Thank you for using Kadence Galleries by <a href=\"https://kadencethemes.com/\" target=\"_blank\">Kadence Themes</a>."
+msgstr ""
+
+#: admin/admin_options.php:104
+#: kadence-galleries.php:1126
+msgid "Gallery Settings"
+msgstr ""
+
+#: admin/admin_options.php:110
+msgid "Gallery Lightbox"
+msgstr ""
+
+#: admin/admin_options.php:111
+msgid "Photoswipe"
+msgstr ""
+
+#: admin/admin_options.php:111
+msgid "Magnific Popup"
+msgstr ""
+
+#: admin/admin_options.php:118
+msgid "Gallery Lightbox Skin"
+msgstr ""
+
+#: admin/admin_options.php:119
+msgid "Light"
+msgstr ""
+
+#: admin/admin_options.php:119
+msgid "Dark"
+msgstr ""
+
+#: admin/admin_options.php:125
+msgid "Gallery Albums, items per page"
+msgstr ""
+
+#: classes/media-category/media-taxonomies.php:187
+#: classes/media-category/media-taxonomies.php:197
+msgid "Categories"
+msgstr ""
+
+#: classes/media-category/media-taxonomies.php:188
+msgid "Category"
+msgstr ""
+
+#: classes/media-category/media-taxonomies.php:189
+msgid "Search Categories"
+msgstr ""
+
+#: classes/media-category/media-taxonomies.php:190
+msgid "All Categories"
+msgstr ""
+
+#: classes/media-category/media-taxonomies.php:191
+msgid "Parent Category"
+msgstr ""
+
+#: classes/media-category/media-taxonomies.php:192
+msgid "Parent Category:"
+msgstr ""
+
+#: classes/media-category/media-taxonomies.php:193
+msgid "Edit Category"
+msgstr ""
+
+#: classes/media-category/media-taxonomies.php:194
+msgid "Update Category"
+msgstr ""
+
+#: classes/media-category/media-taxonomies.php:195
+msgid "Add New Category"
+msgstr ""
+
+#: classes/media-category/media-taxonomies.php:196
+msgid "New Category Name"
+msgstr ""
+
+#: classes/media-category/media-taxonomies.php:201
+msgctxt "Category Slug"
+msgid "media-category"
+msgstr ""
+
+#: classes/media-category/media-taxonomies.php:220
+msgctxt "%1$s = plural, %2$s = singular"
+msgid "View all %s"
+msgstr ""
+
+#: classes/media-links/media-custom-links.php:21
+msgid "Gallery Link URL"
+msgstr ""
+
+#: classes/media-links/media-custom-links.php:28
+msgid "Gallery Link Target"
+msgstr ""
+
+#: classes/media-links/media-custom-links.php:32
+msgid "Do Not Change"
+msgstr ""
+
+#: classes/media-links/media-custom-links.php:33
+msgid "Same Window"
+msgstr ""
+
+#: classes/media-links/media-custom-links.php:34
+msgid "New Window"
+msgstr ""
+
+#: kadence-galleries.php:209
+msgid "Galleries"
+msgstr ""
+
+#: kadence-galleries.php:210
+msgid "Gallery"
+msgstr ""
+
+#: kadence-galleries.php:211
+#: kadence-galleries.php:212
+msgid "Add New Gallery"
+msgstr ""
+
+#: kadence-galleries.php:213
+msgid "Edit Gallery"
+msgstr ""
+
+#: kadence-galleries.php:214
+msgid "New Gallery"
+msgstr ""
+
+#: kadence-galleries.php:215
+msgid "All Galleries"
+msgstr ""
+
+#: kadence-galleries.php:216
+msgid "View Gallery"
+msgstr ""
+
+#: kadence-galleries.php:217
+msgid "Search Galleries"
+msgstr ""
+
+#: kadence-galleries.php:218
+msgid "No Gallery found"
+msgstr ""
+
+#: kadence-galleries.php:219
+msgid "No Gallery found in Trash"
+msgstr ""
+
+#: kadence-galleries.php:221
+msgid "K Galleries"
+msgstr ""
+
+#: kadence-galleries.php:277
+msgid "Title"
+msgstr ""
+
+#: kadence-galleries.php:278
+msgid "Shortcode"
+msgstr ""
+
+#: kadence-galleries.php:279
+msgid "Featured Image"
+msgstr ""
+
+#: kadence-galleries.php:280
+msgid "Album"
+msgstr ""
+
+#: kadence-galleries.php:301
+msgid "None set"
+msgstr ""
+
+#: kadence-galleries.php:310
+msgid "No album set"
+msgstr ""
+
+#: kadence-galleries.php:667
+#: kadence-galleries.php:880
+#: templates/archive-kt_album.php:57
+msgid "Loading Images"
+msgstr ""
+
+#: kadence-galleries.php:861
+msgid "All"
+msgstr ""
+
+#: kadence-galleries.php:987
+msgid "Pin to Pinterest"
+msgstr ""
+
+#: kadence-galleries.php:1026
+msgid "Gallery Page Navigation"
+msgstr ""
+
+#: kadence-galleries.php:1067
+msgid "Close"
+msgstr ""
+
+#: kadence-galleries.php:1068
+msgid "Share"
+msgstr ""
+
+#: kadence-galleries.php:1069
+msgid "Toggle fullscreen"
+msgstr ""
+
+#: kadence-galleries.php:1070
+msgid "Zoom in/out"
+msgstr ""
+
+#: kadence-galleries.php:1071
+msgid "Previous"
+msgstr ""
+
+#: kadence-galleries.php:1072
+msgid "Next"
+msgstr ""
+
+#: kadence-galleries.php:1073
+msgid "Show full caption"
+msgstr ""
+
+#: kadence-galleries.php:1074
+msgid "Minimize caption"
+msgstr ""
+
+#: kadence-galleries.php:1098
+msgid "Add/Edit Gallery"
+msgstr ""
+
+#: kadence-galleries.php:1099
+msgid "Clear Gallery"
+msgstr ""
+
+#: kadence-galleries.php:1140
+msgid "Gallery Images"
+msgstr ""
+
+#: kadence-galleries.php:1141
+msgid "Add images for gallery here"
+msgstr ""
+
+#: kadence-galleries.php:1148
+msgid "Gallery Image Style"
+msgstr ""
+
+#: kadence-galleries.php:1153
+msgid "Masonry (Image defined ratio)"
+msgstr ""
+
+#: kadence-galleries.php:1154
+msgid "Square"
+msgstr ""
+
+#: kadence-galleries.php:1155
+msgid "Portrait"
+msgstr ""
+
+#: kadence-galleries.php:1156
+msgid "Landscape"
+msgstr ""
+
+#: kadence-galleries.php:1157
+msgid "Wide Landscape"
+msgstr ""
+
+#: kadence-galleries.php:1158
+msgid "Tiles (Image defined ratio)"
+msgstr ""
+
+#: kadence-galleries.php:1159
+msgid "Mosaic"
+msgstr ""
+
+#: kadence-galleries.php:1165
+msgid "Columns"
+msgstr ""
+
+#: kadence-galleries.php:1170
+#: kadence-galleries.php:1190
+#: kadence-galleries.php:1210
+msgid "Three Columns (3)"
+msgstr ""
+
+#: kadence-galleries.php:1171
+#: kadence-galleries.php:1191
+#: kadence-galleries.php:1211
+msgid "Four Columns (4)"
+msgstr ""
+
+#: kadence-galleries.php:1172
+#: kadence-galleries.php:1192
+#: kadence-galleries.php:1212
+msgid "Five Columns (5)"
+msgstr ""
+
+#: kadence-galleries.php:1173
+#: kadence-galleries.php:1193
+#: kadence-galleries.php:1213
+msgid "Six Columns (6)"
+msgstr ""
+
+#: kadence-galleries.php:1174
+#: kadence-galleries.php:1194
+#: kadence-galleries.php:1214
+msgid "Two Columns (2)"
+msgstr ""
+
+#: kadence-galleries.php:1175
+#: kadence-galleries.php:1195
+#: kadence-galleries.php:1215
+msgid "One Columns (1)"
+msgstr ""
+
+#: kadence-galleries.php:1185
+msgid "Columns for Tablet screen sizes"
+msgstr ""
+
+#: kadence-galleries.php:1205
+msgid "Columns for Mobile screen sizes"
+msgstr ""
+
+#: kadence-galleries.php:1225
+msgid "Height of tiles row"
+msgstr ""
+
+#: kadence-galleries.php:1237
+msgid "Caption in gallery grid"
+msgstr ""
+
+#: kadence-galleries.php:1242
+msgid "Do not Show"
+msgstr ""
+
+#: kadence-galleries.php:1243
+msgid "Show on image hover (bottom)"
+msgstr ""
+
+#: kadence-galleries.php:1244
+msgid "Show on image hover (center)"
+msgstr ""
+
+#: kadence-galleries.php:1250
+msgid "Add Image Title to Caption"
+msgstr ""
+
+#: kadence-galleries.php:1255
+#: kadence-galleries.php:1267
+#: kadence-galleries.php:1280
+#: kadence-galleries.php:1313
+#: kadence-galleries.php:1325
+msgid "False"
+msgstr ""
+
+#: kadence-galleries.php:1256
+#: kadence-galleries.php:1268
+#: kadence-galleries.php:1281
+#: kadence-galleries.php:1314
+#: kadence-galleries.php:1326
+msgid "True"
+msgstr ""
+
+#: kadence-galleries.php:1262
+msgid "Add Image Category Name(s) to Caption"
+msgstr ""
+
+#: kadence-galleries.php:1274
+msgid "Add image category filter to gallery"
+msgstr ""
+
+#: kadence-galleries.php:1275
+msgid "All Images must have an assigned category"
+msgstr ""
+
+#: kadence-galleries.php:1291
+msgid "Choose which categories to filter"
+msgstr ""
+
+#: kadence-galleries.php:1308
+msgid "Include Pinterest Button on Images"
+msgstr ""
+
+#: kadence-galleries.php:1320
+msgid "Turn on Pagination"
+msgstr ""
+
+#: kadence-galleries.php:1332
+msgid "Items Per Page"
+msgstr ""

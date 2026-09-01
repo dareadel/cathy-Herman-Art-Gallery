@@ -1,0 +1,220 @@
+# Copyright (C) 2025 Kadence WP
+# This file is distributed under the GPLv2-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Kadence Creative Kit 1.0.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/kadence-creative-kit\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-03-18T18:01:22+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.7.1\n"
+"X-Domain: kadence-creative-kit\n"
+
+#. Plugin Name of the plugin
+#: inc/KadenceCreativeKit/Admin/Settings.php:75
+msgid "Kadence Creative Kit"
+msgstr ""
+
+#. Description of the plugin
+msgid "Premium Designs, AI Page Generator."
+msgstr ""
+
+#. Author of the plugin
+msgid "Kadence WP"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://kadencewp.com"
+msgstr ""
+
+#: inc/KadenceCreativeKit/Admin/Designs_REST_Controller.php:121
+#: inc/KadenceCreativeKit/Admin/Designs_REST_Controller.php:168
+#: inc/KadenceCreativeKit/Admin/Designs_REST_Controller.php:235
+#: inc/KadenceCreativeKit/Admin/Designs_REST_Controller.php:314
+msgid "Missing required parameter."
+msgstr ""
+
+#: inc/KadenceCreativeKit/Admin/Designs_REST_Controller.php:135
+#: inc/KadenceCreativeKit/Admin/Designs_REST_Controller.php:142
+#: inc/KadenceCreativeKit/Admin/Designs_REST_Controller.php:204
+#: inc/KadenceCreativeKit/Admin/Designs_REST_Controller.php:215
+msgid "Error fetching data from Prophecy."
+msgstr ""
+
+#: inc/KadenceCreativeKit/Admin/Designs_REST_Controller.php:177
+msgid "Missing required AI data."
+msgstr ""
+
+#: inc/KadenceCreativeKit/Admin/Designs_REST_Controller.php:182
+msgid "Page title must be at least 5 characters long."
+msgstr ""
+
+#: inc/KadenceCreativeKit/Admin/Designs_REST_Controller.php:219
+msgid "Empty data from Prophecy."
+msgstr ""
+
+#: inc/KadenceCreativeKit/Admin/Designs_REST_Controller.php:329
+msgid "There was an error during the request."
+msgstr ""
+
+#: inc/KadenceCreativeKit/Admin/Settings.php:76
+msgid "- Premium Design Library"
+msgstr ""
+
+#: inc/KadenceCreativeKit/Admin/Settings.php:81
+msgid "Web Creators Community"
+msgstr ""
+
+#: inc/KadenceCreativeKit/Admin/Settings.php:82
+msgid "Join our community of fellow kadence users creating effective websites! Share your site, ask a question and help others."
+msgstr ""
+
+#: inc/KadenceCreativeKit/Admin/Settings.php:84
+msgid "Join our Facebook Group"
+msgstr ""
+
+#: inc/KadenceCreativeKit/Admin/Settings.php:87
+msgid "Documentation"
+msgstr ""
+
+#: inc/KadenceCreativeKit/Admin/Settings.php:88
+msgid "Need help? We have a knowledge base full of articles to get you started."
+msgstr ""
+
+#: inc/KadenceCreativeKit/Admin/Settings.php:90
+msgid "Browse Docs"
+msgstr ""
+
+#: inc/KadenceCreativeKit/Admin/Settings.php:93
+msgid "Support"
+msgstr ""
+
+#: inc/KadenceCreativeKit/Admin/Settings.php:94
+msgid "Have a question, we are happy to help! Get in touch with our support team."
+msgstr ""
+
+#: inc/KadenceCreativeKit/Admin/Settings.php:96
+msgid "Submit a Ticket"
+msgstr ""
+
+#: inc/uplink/admin-views/field.php:45
+msgid "Save Changes"
+msgstr ""
+
+#: inc/uplink/Connect.php:82
+msgid "Your license key is valid"
+msgstr ""
+
+#: inc/uplink/Connect.php:164
+msgid "License Key"
+msgstr ""
+
+#: inc/uplink/Connect.php:172
+msgid "Clear"
+msgstr ""
+
+#: inc/uplink/Connect.php:229
+msgid "Kadence Creative Kit has not been activated."
+msgstr ""
+
+#: inc/uplink/Connect.php:229
+msgid "Click here to activate."
+msgstr ""
+
+#: kadence-creative-kit.php:70
+msgid "Install Kadence Blocks"
+msgstr ""
+
+#: kadence-creative-kit.php:73
+msgid "Activate Kadence Blocks"
+msgstr ""
+
+#. translators: %s is a link to kadence block plugin.
+#: kadence-creative-kit.php:90
+msgid "Kadence Creative Kit requires %s to be active for all functions to work."
+msgstr ""
+
+#: kadence-creative-kit.php:92
+msgid "Activating..."
+msgstr ""
+
+#: kadence-creative-kit.php:92
+msgid "Activated"
+msgstr ""
+
+#: kadence-creative-kit.php:92
+msgid "Installing..."
+msgstr ""
+
+#: kadence-creative-kit.php:92
+msgid "Installed"
+msgstr ""
+
+#: build/admin-dash.js:1
+msgid "License"
+msgstr ""
+
+#: build/admin-dash.js:1
+msgid "Help"
+msgstr ""
+
+#: build/admin-dash.js:1
+msgid "Changelog"
+msgstr ""
+
+#: build/blocks-page-wizard.js:1
+msgid "Options"
+msgstr ""
+
+#: build/blocks-page-wizard.js:1
+msgid "Delete"
+msgstr ""
+
+#: build/blocks-page-wizard.js:1
+msgid "Duplicate"
+msgstr ""
+
+#: build/blocks-page-wizard.js:1
+msgid "Add Section"
+msgstr ""
+
+#: build/blocks-page-wizard.js:1
+msgid "Search sections…"
+msgstr ""
+
+#: build/blocks-page-wizard.js:1
+msgid "No sections found"
+msgstr ""
+
+#: build/blocks-page-wizard.js:1
+msgid "There was an error fetching the layout. Please try again."
+msgstr ""
+
+#. translators: %s: language
+#: build/blocks-page-wizard.js:5
+msgid "Page Info"
+msgstr ""
+
+#: build/blocks-page-wizard.js:5
+msgid "Page Structure"
+msgstr ""
+
+#: build/blocks-page-wizard.js:5
+msgid "Page Style"
+msgstr ""
+
+#: build/blocks-page-wizard.js:5
+msgid "Preview"
+msgstr ""
+
+#: build/blocks-page-wizard.js:5
+msgid "Pattern Layout"
+msgstr ""
+
+#: build/blocks-page-wizard.js:5
+msgid "Final Preview"
+msgstr ""

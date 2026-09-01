@@ -1,0 +1,31 @@
+== 1.1.4 | 27th May 2026 ==
+* Update: Marquee block now uses GSAP for animation in place of Splide.js, improving smoothness and seamless looping.
+* Update: Marquee animation now previews in the editor, including for vertical marquees.
+* Fix: Vertical marquee overflow on the frontend.
+* Fix: Trailing gap and overlap on repeat in the marquee block.
+* Fix: Marquee initialization now waits for images to load so animation dimensions are accurate.
+* Fix: Flicker in the marquee block editor when interacting with media UI.
+
+== 1.1.3 | 11th March 2026 ==
+* Fix: Issue with right scrolling Marquee (Adv) Blocks
+
+== 1.1.2 | 29th January 2026 ==
+* Update: Allow additional inner blocks inside the marque block.
+
+== 1.1.1 | 24th October 2025 ==
+* Fix: Ensure the marquee auto-scroll initializes in Safari.
+
+== 1.1.0 | 23rd October 2025 ==
+* Add: Marquee block.
+
+== 1.0.2 | 5th May 2025 ==
+* Fix: AOS with only nested inner blocks.
+
+== 1.0.1 | 18th March 2025 ==
+* Update: Allow for embed license keys.
+
+== 1.0.0 | 16th January 2025 ==
+* Update: Initial release.
+
+== 0.1.0 | 10th January 2025 ==
+* Update: Initial Beta.

@@ -1,0 +1,110 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "title": "Marquee Item",
+  "name": "kadence/marquee-item",
+  "category": "kadence-blocks",
+  "description": "Individual item for the marquee block.",
+  "attributes": {
+    "uniqueID": {
+      "type": "string",
+      "default": ""
+    },
+    "id": {
+      "type": "number",
+      "default": 1
+    },
+    "background": {
+      "type": "string",
+      "default": ""
+    },
+    "backgroundType": {
+      "type": "string",
+      "default": "normal"
+    },
+    "backgroundGradient": {
+      "type": "string",
+      "default": ""
+    },
+    "margin": {
+      "type": "array",
+      "default": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    "tabletMargin": {
+      "type": "array",
+      "default": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    "mobileMargin": {
+      "type": "array",
+      "default": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    "marginUnit": {
+      "type": "string",
+      "default": "px"
+    },
+    "padding": {
+      "type": "array",
+      "default": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    "tabletPadding": {
+      "type": "array",
+      "default": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    "mobilePadding": {
+      "type": "array",
+      "default": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    "paddingUnit": {
+      "type": "string",
+      "default": "px"
+    },
+    "kbVersion": {
+      "type": "number",
+      "default": ""
+    }
+  },
+  "parent": [
+    "kadence/marquee"
+  ],
+  "supports": {
+    "anchor": true,
+    "inserter": false,
+    "reusable": false,
+    "html": false,
+    "kbMetadata": true
+  },
+  "usesContext": [
+    "marquee/isPreviewMode",
+    "marquee/editingShellVisible"
+  ]
+}

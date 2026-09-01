@@ -1,0 +1,1466 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Kadence Galleries\n"
+"POT-Creation-Date: 2020-07-01 20:52-0600\n"
+"PO-Revision-Date: 2015-01-10 00:32-0700\n"
+"Last-Translator: \n"
+"Language-Team: Kadence Themes\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3.1\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;esc_attr__;esc_attr_e\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: admin/redux/assets/js\n"
+"X-Poedit-SearchPathExcluded-1: admin/options_assets/extensions/vendor_support\n"
+"X-Poedit-SearchPathExcluded-2: admin/cmb_select2/cmb_select2_script.js\n"
+"X-Poedit-SearchPathExcluded-3: admin/cmb_select2/select2.js\n"
+"X-Poedit-SearchPathExcluded-4: admin/cmb2-conditionals/cmb2-conditionals.js\n"
+"X-Poedit-SearchPathExcluded-5: admin/cmb2-conditionals/min/cmb2-conditionals-min.js\n"
+"X-Poedit-SearchPathExcluded-6: assets/js\n"
+"X-Poedit-SearchPathExcluded-7: assets/magnific\n"
+"X-Poedit-SearchPathExcluded-8: assets/photoswipe\n"
+
+#: admin/admin_options.php:42 kadence-galleries.php:1759
+#, php-format
+msgid "You are logged in as %s."
+msgstr ""
+
+#: admin/admin_options.php:48 admin/admin_options.php:64
+#: kadence-galleries.php:1808
+msgid "Not Logged In"
+msgstr ""
+
+#: admin/admin_options.php:55 admin/admin_options.php:64
+msgid "Login Here"
+msgstr ""
+
+#: admin/admin_options.php:75
+msgid "Settings"
+msgstr ""
+
+#: admin/admin_options.php:76
+msgid "Kadence Galleries Settings"
+msgstr ""
+
+#: admin/admin_options.php:94
+msgid "Thank you for using Kadence Galleries by <a href=\"https://kadencethemes.com/\" target=\"_blank\">Kadence Themes</a>."
+msgstr ""
+
+#: admin/admin_options.php:151 kadence-galleries.php:1273
+msgid "Gallery Settings"
+msgstr ""
+
+#: admin/admin_options.php:157
+msgid "Gallery Lightbox"
+msgstr ""
+
+#: admin/admin_options.php:158
+msgid "Photoswipe"
+msgstr ""
+
+#: admin/admin_options.php:158
+msgid "Magnific Popup"
+msgstr ""
+
+#: admin/admin_options.php:165
+msgid "Gallery Lightbox Skin"
+msgstr ""
+
+#: admin/admin_options.php:166
+msgid "Light"
+msgstr ""
+
+#: admin/admin_options.php:166
+msgid "Dark"
+msgstr ""
+
+#: admin/admin_options.php:172
+msgid "Gallery Albums, items per page"
+msgstr ""
+
+#: admin/admin_options.php:186
+msgid "External Sources"
+msgstr ""
+
+#: admin/admin_options.php:192
+msgid "Enable Photoshelter"
+msgstr ""
+
+#: admin/admin_options.php:193
+msgid "This allows you use photoshelter galleries as the source for your Kadence Gallery"
+msgstr ""
+
+#: admin/admin_options.php:200
+msgid "Login to Photoshelter"
+msgstr ""
+
+#: admin/admin_options.php:201
+msgid "This will allow you to access your Photoshelter galleries"
+msgstr ""
+
+#: admin/cmb/includes/CMB2.php:603
+msgid "Click to toggle"
+msgstr ""
+
+#: admin/cmb/includes/CMB2_Base.php:422
+#, php-format
+msgid "The \"%1$s\" field parameter has been deprecated in favor of the \"%2$s\" parameter."
+msgstr ""
+
+#: admin/cmb/includes/CMB2_Base.php:426
+#, php-format
+msgid "Using the \"%1$s\" field parameter as a callback has been deprecated in favor of the \"%2$s\" parameter."
+msgstr ""
+
+#: admin/cmb/includes/CMB2_Base.php:456
+#, php-format
+msgid "%1$s was called with a parameter that is <strong>deprecated</strong> since version %2$s! %3$s"
+msgstr ""
+
+#: admin/cmb/includes/CMB2_Base.php:458
+#, php-format
+msgid "%1$s was called with a parameter that is <strong>deprecated</strong> since version %2$s with no alternative available."
+msgstr ""
+
+#: admin/cmb/includes/CMB2_Options_Hookup.php:139
+msgid "Nothing to update."
+msgstr ""
+
+#: admin/cmb/includes/CMB2_Options_Hookup.php:143
+msgid "Settings updated."
+msgstr ""
+
+#: admin/cmb/includes/CMB2_Types.php:226
+msgid "Custom CMB2 field type classes must extend CMB2_Type_Base."
+msgstr ""
+
+#: admin/cmb/includes/CMB2_hookup.php:466
+#, php-format
+msgid "Toggle panel: %s"
+msgstr ""
+
+#: admin/cmb/includes/rest-api/CMB2_REST_Controller.php:257
+msgid "This box does not have read permissions."
+msgstr ""
+
+#: admin/cmb/includes/rest-api/CMB2_REST_Controller.php:277
+msgid "This box does not have write permissions."
+msgstr ""
+
+#: admin/cmb/includes/rest-api/CMB2_REST_Controller.php:300
+msgid "No box found by that id. A box needs to be registered with the \"show_in_rest\" parameter configured."
+msgstr ""
+
+#: admin/cmb/includes/rest-api/CMB2_REST_Controller.php:378
+msgid "A human-readable description of the object."
+msgstr ""
+
+#: admin/cmb/includes/rest-api/CMB2_REST_Controller.php:385
+msgid "The id for the object."
+msgstr ""
+
+#: admin/cmb/includes/rest-api/CMB2_REST_Controller.php:392
+msgid "The title for the object."
+msgstr ""
+
+#: admin/cmb/includes/rest-api/CMB2_REST_Controller_Boxes.php:51
+msgid "Includes the registered fields for the box in the response."
+msgstr ""
+
+#: admin/cmb/includes/rest-api/CMB2_REST_Controller_Boxes.php:72
+msgid "Includes the fully rendered attributes, 'form_open', 'form_close', as well as the enqueued 'js_dependencies' script handles, and 'css_dependencies' stylesheet handles."
+msgstr ""
+
+#: admin/cmb/includes/rest-api/CMB2_REST_Controller_Boxes.php:122
+msgid "No boxes found."
+msgstr ""
+
+#: admin/cmb/includes/rest-api/CMB2_REST_Controller_Fields.php:27
+msgid "Includes the box object which the fields are registered to in the response."
+msgstr ""
+
+#: admin/cmb/includes/rest-api/CMB2_REST_Controller_Fields.php:30
+msgid "When the '_rendered' argument is passed, the renderable field attributes will be returned fully rendered. By default, the names of the callback handers for the renderable attributes will be returned."
+msgstr ""
+
+#: admin/cmb/includes/rest-api/CMB2_REST_Controller_Fields.php:33
+#: admin/cmb/includes/rest-api/CMB2_REST_Controller_Fields.php:36
+msgid "To view or modify the field's value, the 'object_id' and 'object_type' arguments are required."
+msgstr ""
+
+#: admin/cmb/includes/rest-api/CMB2_REST_Controller_Fields.php:236
+msgid "CMB2 Field value cannot be updated without the value parameter specified."
+msgstr ""
+
+#: admin/cmb/includes/rest-api/CMB2_REST_Controller_Fields.php:297
+msgid "CMB2 Field value cannot be modified without the object_id and object_type parameters specified."
+msgstr ""
+
+#: admin/cmb/includes/rest-api/CMB2_REST_Controller_Fields.php:312
+#: admin/cmb/includes/rest-api/CMB2_REST_Controller_Fields.php:341
+msgid "No field found by that id."
+msgstr ""
+
+#: admin/cmb/includes/rest-api/CMB2_REST_Controller_Fields.php:415
+#, php-format
+msgid "Value Error for %s"
+msgstr ""
+
+#: admin/cmb/includes/shim/WP_REST_Controller.php:25
+#, php-format
+msgid "Method '%s' must be overridden."
+msgstr ""
+
+#: admin/cmb/includes/shim/WP_REST_Controller.php:35
+#: admin/cmb/includes/shim/WP_REST_Controller.php:47
+#: admin/cmb/includes/shim/WP_REST_Controller.php:59
+#: admin/cmb/includes/shim/WP_REST_Controller.php:71
+#: admin/cmb/includes/shim/WP_REST_Controller.php:83
+#: admin/cmb/includes/shim/WP_REST_Controller.php:95
+#: admin/cmb/includes/shim/WP_REST_Controller.php:107
+#: admin/cmb/includes/shim/WP_REST_Controller.php:119
+#: admin/cmb/includes/shim/WP_REST_Controller.php:131
+#: admin/cmb/includes/shim/WP_REST_Controller.php:143
+#: admin/cmb/includes/shim/WP_REST_Controller.php:155
+#: admin/cmb/includes/shim/WP_REST_Controller.php:168
+#, php-format
+msgid "Method '%s' not implemented. Must be overridden in subclass."
+msgstr ""
+
+#: admin/cmb/includes/shim/WP_REST_Controller.php:273
+msgid "Current page of the collection."
+msgstr ""
+
+#: admin/cmb/includes/shim/WP_REST_Controller.php:281
+msgid "Maximum number of items to be returned in result set."
+msgstr ""
+
+#: admin/cmb/includes/shim/WP_REST_Controller.php:290
+msgid "Limit results to those matching a string."
+msgstr ""
+
+#: admin/cmb/includes/shim/WP_REST_Controller.php:308
+msgid "Scope under which the request is made; determines fields present in response."
+msgstr ""
+
+#: admin/options_assets/extensions/advanced_customizer/extension_advanced_customizer.php:735
+#: admin/redux/core/enqueue.php:453
+#: admin/redux/inc/extensions/customizer/extension_customizer.php:685
+msgid "You have changes that are not saved. Would you like to save them now?"
+msgstr ""
+
+#: admin/options_assets/extensions/advanced_customizer/extension_advanced_customizer.php:736
+#: admin/redux/core/enqueue.php:461
+#: admin/redux/inc/extensions/customizer/extension_customizer.php:686
+msgid "Are you sure? Resetting will lose all custom values."
+msgstr ""
+
+#: admin/options_assets/extensions/advanced_customizer/extension_advanced_customizer.php:737
+#: admin/redux/core/enqueue.php:477
+#: admin/redux/inc/extensions/customizer/extension_customizer.php:687
+msgid "Your current options will be replaced with the values of this preset. Would you like to proceed?"
+msgstr ""
+
+#: admin/options_assets/extensions/advanced_customizer/extension_advanced_customizer.php:770
+#: admin/redux/inc/extensions/customizer/extension_customizer.php:720
+msgid "You have changes that are not saved.  Would you like to save them now?"
+msgstr ""
+
+#: admin/options_assets/extensions/advanced_customizer/extension_advanced_customizer.php:771
+#: admin/redux/inc/extensions/customizer/extension_customizer.php:721
+msgid "Are you sure?  Resetting will lose all custom values."
+msgstr ""
+
+#: admin/options_assets/extensions/advanced_customizer/extension_advanced_customizer.php:772
+#: admin/redux/inc/extensions/customizer/extension_customizer.php:722
+msgid "Your current options will be replaced with the values of this preset.  Would you like to proceed?"
+msgstr ""
+
+#: admin/options_assets/extensions/advanced_customizer/inc/advanced_customizer_panel.php:54
+#: admin/options_assets/extensions/advanced_customizer/inc/advanced_customizer_panel.php:78
+msgid "Press return or enter to open this panel"
+msgstr ""
+
+#: admin/options_assets/extensions/advanced_customizer/inc/advanced_customizer_section.php:35
+#, php-format
+msgid "Customizing &#9656; %s"
+msgstr ""
+
+#: admin/options_assets/extensions/advanced_customizer/inc/advanced_customizer_section.php:37
+msgid "Customizing"
+msgstr ""
+
+#: admin/options_assets/extensions/advanced_customizer/inc/advanced_customizer_section.php:61
+#: admin/redux/inc/extensions/customizer/inc/customizer_section.php:72
+msgid "Press return or enter to open"
+msgstr ""
+
+#: admin/options_assets/extensions/advanced_customizer/inc/advanced_customizer_section.php:67
+#: admin/redux/inc/extensions/customizer/inc/customizer_panel.php:138
+#: admin/redux/inc/extensions/customizer/inc/customizer_section.php:79
+msgid "Back"
+msgstr ""
+
+#: admin/options_assets/extensions/advanced_customizer/inc/advanced_customizer_section.php:106
+#: admin/redux/inc/extensions/customizer/inc/customizer_section.php:122
+msgid "Press return or enter to expand"
+msgstr ""
+
+#: admin/options_assets/extensions/kad_icons/kad_icons/field_kad_icons.php:50
+msgid "Icon"
+msgstr ""
+
+#: admin/options_assets/extensions/kad_icons/kad_icons/field_kad_icons.php:55
+#: admin/options_assets/extensions/kad_slides/kad_slides/field_kad_slides.php:53
+#, php-format
+msgid "New %s"
+msgstr ""
+
+#: admin/options_assets/extensions/kad_icons/kad_icons/field_kad_icons.php:110
+#: admin/options_assets/extensions/kad_icons/kad_icons/field_kad_icons.php:178
+msgid "Upload Icon"
+msgstr ""
+
+#: admin/options_assets/extensions/kad_icons/kad_icons/field_kad_icons.php:116
+#: admin/options_assets/extensions/kad_icons/kad_icons/field_kad_icons.php:180
+#: admin/options_assets/extensions/kad_slides/kad_slides/field_kad_slides.php:115
+#: admin/options_assets/extensions/kad_slides/kad_slides/field_kad_slides.php:161
+#: admin/redux/inc/fields/background/field_background.php:321
+#: admin/redux/inc/fields/media/field_media.php:205
+#: admin/redux/inc/fields/multi_text/field_multi_text.php:69
+#: admin/redux/inc/fields/multi_text/field_multi_text.php:73
+#: admin/redux/inc/fields/multi_text/field_multi_text.php:76
+msgid "Remove"
+msgstr ""
+
+#: admin/options_assets/extensions/kad_icons/kad_icons/field_kad_icons.php:119
+#: admin/options_assets/extensions/kad_icons/kad_icons/field_kad_icons.php:184
+msgid "Select an Icon"
+msgstr ""
+
+#: admin/options_assets/extensions/kad_icons/kad_icons/field_kad_icons.php:139
+#: admin/options_assets/extensions/kad_icons/kad_icons/field_kad_icons.php:203
+#: admin/options_assets/extensions/kad_slides/kad_slides/field_kad_slides.php:121
+#: admin/options_assets/extensions/kad_slides/kad_slides/field_kad_slides.php:166
+msgid "URL"
+msgstr ""
+
+#: admin/options_assets/extensions/kad_icons/kad_icons/field_kad_icons.php:140
+#: admin/options_assets/extensions/kad_icons/kad_icons/field_kad_icons.php:205
+#: admin/options_assets/extensions/kad_slides/kad_slides/field_kad_slides.php:122
+#: admin/options_assets/extensions/kad_slides/kad_slides/field_kad_slides.php:168
+#: kadence-galleries.php:320
+msgid "Title"
+msgstr ""
+
+#: admin/options_assets/extensions/kad_icons/kad_icons/field_kad_icons.php:141
+#: admin/options_assets/extensions/kad_icons/kad_icons/field_kad_icons.php:207
+#: admin/options_assets/extensions/kad_slides/kad_slides/field_kad_slides.php:123
+#: admin/options_assets/extensions/kad_slides/kad_slides/field_kad_slides.php:170
+msgid "Description"
+msgstr ""
+
+#: admin/options_assets/extensions/kad_icons/kad_icons/field_kad_icons.php:142
+#: admin/options_assets/extensions/kad_icons/kad_icons/field_kad_icons.php:209
+msgid "Icon Link"
+msgstr ""
+
+#: admin/options_assets/extensions/kad_icons/kad_icons/field_kad_icons.php:146
+#: admin/options_assets/extensions/kad_icons/kad_icons/field_kad_icons.php:214
+#: admin/options_assets/extensions/kad_slides/kad_slides/field_kad_slides.php:128
+#: admin/options_assets/extensions/kad_slides/kad_slides/field_kad_slides.php:177
+msgid "Open Link in New Tab/Window"
+msgstr ""
+
+#: admin/options_assets/extensions/kad_icons/kad_icons/field_kad_icons.php:156
+#: admin/options_assets/extensions/kad_icons/kad_icons/field_kad_icons.php:223
+msgid "Delete Icon"
+msgstr ""
+
+#: admin/options_assets/extensions/kad_icons/kad_icons/field_kad_icons.php:226
+msgid "Add Icon"
+msgstr ""
+
+#: admin/options_assets/extensions/kad_slides/kad_slides/field_kad_slides.php:48
+msgid "Slide"
+msgstr ""
+
+#: admin/options_assets/extensions/kad_slides/kad_slides/field_kad_slides.php:108
+#: admin/options_assets/extensions/kad_slides/kad_slides/field_kad_slides.php:159
+#: admin/redux/inc/fields/background/field_background.php:314
+#: admin/redux/inc/fields/media/field_media.php:198
+msgid "Upload"
+msgstr ""
+
+#: admin/options_assets/extensions/kad_slides/kad_slides/field_kad_slides.php:124
+#: admin/options_assets/extensions/kad_slides/kad_slides/field_kad_slides.php:172
+msgid "Slide Link"
+msgstr ""
+
+#: admin/options_assets/extensions/kad_slides/kad_slides/field_kad_slides.php:137
+#: admin/options_assets/extensions/kad_slides/kad_slides/field_kad_slides.php:185
+msgid "Delete Slide"
+msgstr ""
+
+#: admin/options_assets/extensions/kad_slides/kad_slides/field_kad_slides.php:188
+#, php-format
+msgid "Add %s"
+msgstr ""
+
+#: admin/redux/core/enqueue.php:469
+msgid "Are you sure? Resetting will lose all custom values in this section."
+msgstr ""
+
+#: admin/redux/core/enqueue.php:484
+msgid "Please Wait"
+msgstr ""
+
+#: admin/redux/core/enqueue.php:495
+msgid "There was an error saving. Here is the result of your action:"
+msgstr ""
+
+#: admin/redux/core/enqueue.php:496
+msgid "There was a problem with your action. Please try again or reload the page."
+msgstr ""
+
+#: admin/redux/core/panel.php:65
+msgid "Warning- This options panel will not work properly without javascript!"
+msgstr ""
+
+#: admin/redux/core/panel.php:141
+msgid "Settings Imported!"
+msgstr ""
+
+#: admin/redux/core/panel.php:156
+msgid "All Defaults Restored!"
+msgstr ""
+
+#: admin/redux/core/panel.php:170
+msgid "Section Defaults Restored!"
+msgstr ""
+
+#: admin/redux/core/panel.php:184
+msgid "Settings Saved!"
+msgstr ""
+
+#: admin/redux/core/panel.php:204
+msgid "Settings have changed, you should save them!"
+msgstr ""
+
+#: admin/redux/core/panel.php:212
+msgid "error(s) were found!"
+msgstr ""
+
+#: admin/redux/core/panel.php:220
+msgid "warning(s) were found!"
+msgstr ""
+
+#: admin/redux/core/panel.php:312
+msgid "<strong>Your panel has bundled outdated copies of Redux Framework template files</strong> &#8211; if you encounter functionality issues this could be the reason. Ensure you update or remove them."
+msgstr ""
+
+#: admin/redux/framework.php:220
+#, php-format
+msgid "Options panel created using %1$s"
+msgstr ""
+
+#: admin/redux/framework.php:220
+msgid "Redux Framework"
+msgstr ""
+
+#: admin/redux/framework.php:224 admin/redux/framework.php:228
+msgid "Options"
+msgstr ""
+
+#: admin/redux/framework.php:1731
+msgid "Enable"
+msgstr ""
+
+#: admin/redux/framework.php:1736
+msgid "Disable"
+msgstr ""
+
+#: admin/redux/framework.php:1742
+msgid "moving the mouse over"
+msgstr ""
+
+#: admin/redux/framework.php:1744
+msgid "clicking"
+msgstr ""
+
+#: admin/redux/framework.php:1748
+#, php-format
+msgid "Hints are tooltips that popup when %d the hint icon, offering addition information about the field in which they appear.  They can be %d d by using the link below."
+msgstr ""
+
+#: admin/redux/framework.php:1753
+msgid "Hints"
+msgstr ""
+
+#: admin/redux/framework.php:1880
+msgid "Default"
+msgstr ""
+
+#: admin/redux/framework.php:2758
+msgid "Invalid security credential.  Please reload the page and try again."
+msgstr ""
+
+#: admin/redux/framework.php:2767
+msgid "Invalid user capability.  Please reload the page and try again."
+msgstr ""
+
+#: admin/redux/framework.php:2847
+msgid "Your panel has no fields. Nothing to save."
+msgstr ""
+
+#: admin/redux/inc/class.redux_cdn.php:74
+msgid "Please wait a few minutes, then try refreshing the page. Unable to load some remotely hosted scripts."
+msgstr ""
+
+#: admin/redux/inc/class.redux_cdn.php:76
+#, php-format
+msgid "If you are developing offline, please download and install the <a href=\"%s\" target=\"_blank\">Redux Vendor Support</a> plugin/extension to bypass the our CDN and avoid this warning"
+msgstr ""
+
+#: admin/redux/inc/class.redux_cdn.php:81
+msgid "Redux Framework Warning"
+msgstr ""
+
+#: admin/redux/inc/class.redux_cdn.php:81
+#, php-format
+msgid "%s CDN unavailable.  Some controls may not render properly."
+msgstr ""
+
+#: admin/redux/inc/class.redux_cdn.php:113
+#, php-format
+msgid "The <a href=\"%s\">Vendor Support plugin</a> (or extension) is either not installed or not activated and thus, some controls may not render properly.  Please ensure that it is installed and <a href=\"%s\">activated</a>"
+msgstr ""
+
+#: admin/redux/inc/class.redux_filesystem.php:32
+#: admin/redux/inc/class.redux_filesystem.php:61
+#: admin/redux/inc/class.redux_filesystem.php:272
+msgid "File Permission Issues"
+msgstr ""
+
+#: admin/redux/inc/class.redux_filesystem.php:32
+#, php-format
+msgid "We were unable to modify required files. Please check your permissions, or modify your wp-config.php file to contain your FTP login credentials as <a href=\"%s\" target=\"_blank\">outlined here</a>."
+msgstr ""
+
+#: admin/redux/inc/class.redux_filesystem.php:61
+#: admin/redux/inc/class.redux_filesystem.php:272
+#, php-format
+msgid "We were unable to modify required files. Please ensure that <code>%1s</code> has the proper read-write permissions, or modify your wp-config.php file to contain your FTP login credentials as <a href=\"%2s\" target=\"_blank\">outlined here</a>."
+msgstr ""
+
+#: admin/redux/inc/class.redux_helpers.php:610
+#, php-format
+msgid "<code>%s</code> version <strong style=\"color:red\">%s</strong> is out of date. The core version is %s"
+msgstr ""
+
+#: admin/redux/inc/extensions/customizer/inc/customizer_panel.php:114
+#: admin/redux/inc/extensions/customizer/inc/customizer_panel.php:142
+#, php-format
+msgid "You are customizing %s"
+msgstr ""
+
+#: admin/redux/inc/extensions/customizer/inc/customizer_panel.php:146
+msgid "Help"
+msgstr ""
+
+#: admin/redux/inc/extensions/import_export/extension_import_export.php:120
+msgid "Import / Export"
+msgstr ""
+
+#: admin/redux/inc/extensions/import_export/import_export/field_import_export.php:104
+msgid "Input your backup file below and hit Import to restore your sites options from a backup."
+msgstr ""
+
+#: admin/redux/inc/extensions/import_export/import_export/field_import_export.php:111
+msgid "Input the URL to another sites options set and hit Import to load the options from that site."
+msgstr ""
+
+#: admin/redux/inc/extensions/import_export/import_export/field_import_export.php:116
+msgid "WARNING! This will overwrite all existing option values, please proceed with caution!"
+msgstr ""
+
+#: admin/redux/inc/extensions/import_export/import_export/field_import_export.php:124
+msgid "Here you can copy/download your current option settings. Keep this safe as you can use it as a backup should anything go wrong, or you can use it to restore your settings on this site (or any other site)."
+msgstr ""
+
+#: admin/redux/inc/extensions/options_object/extension_options_object.php:82
+msgid "Options Object"
+msgstr ""
+
+#: admin/redux/inc/fields/background/field_background.php:124
+#: admin/redux/inc/fields/color/field_color.php:73
+msgid "Transparent"
+msgstr ""
+
+#: admin/redux/inc/fields/background/field_background.php:141
+msgid "Background Repeat"
+msgstr ""
+
+#: admin/redux/inc/fields/background/field_background.php:157
+msgid "Background Clip"
+msgstr ""
+
+#: admin/redux/inc/fields/background/field_background.php:173
+msgid "Background Origin"
+msgstr ""
+
+#: admin/redux/inc/fields/background/field_background.php:188
+msgid "Background Size"
+msgstr ""
+
+#: admin/redux/inc/fields/background/field_background.php:203
+msgid "Background Attachment"
+msgstr ""
+
+#: admin/redux/inc/fields/background/field_background.php:223
+msgid "Background Position"
+msgstr ""
+
+#: admin/redux/inc/fields/background/field_background.php:277
+#: admin/redux/inc/fields/media/field_media.php:149
+msgid "No media selected"
+msgstr ""
+
+#: admin/redux/inc/fields/multi_text/field_multi_text.php:61
+msgid "Add More"
+msgstr ""
+
+#: admin/redux/inc/fields/select/field_select.php:83
+msgid "Select an item"
+msgstr ""
+
+#: admin/redux/inc/fields/select/field_select.php:134
+msgid "No items of this type were found."
+msgstr ""
+
+#: admin/redux/inc/fields/switch/field_switch.php:41
+msgid "On"
+msgstr ""
+
+#: admin/redux/inc/fields/switch/field_switch.php:44
+msgid "Off"
+msgstr ""
+
+#: admin/redux/inc/fields/typography/field_typography.php:231
+msgid "Font Family"
+msgstr ""
+
+#: admin/redux/inc/fields/typography/field_typography.php:232
+msgid "Font family"
+msgstr ""
+
+#: admin/redux/inc/fields/typography/field_typography.php:258
+#: admin/redux/inc/fields/typography/field_typography.php:259
+msgid "Backup Font Family"
+msgstr ""
+
+#: admin/redux/inc/fields/typography/field_typography.php:273
+#: admin/redux/inc/fields/typography/field_typography.php:281
+msgid "Font style"
+msgstr ""
+
+#: admin/redux/inc/fields/typography/field_typography.php:274
+msgid "Font Weight &amp; Style"
+msgstr ""
+
+#: admin/redux/inc/fields/typography/field_typography.php:281
+msgid "Style"
+msgstr ""
+
+#: admin/redux/inc/fields/typography/field_typography.php:321
+msgid "Font subsets"
+msgstr ""
+
+#: admin/redux/inc/fields/typography/field_typography.php:323
+msgid "Font Subsets"
+msgstr ""
+
+#: admin/redux/inc/fields/typography/field_typography.php:325
+msgid "Subsets"
+msgstr ""
+
+#: admin/redux/inc/fields/typography/field_typography.php:325
+msgid "Font script"
+msgstr ""
+
+#: admin/redux/inc/fields/typography/field_typography.php:342
+#: admin/redux/inc/fields/typography/field_typography.php:343
+#: admin/redux/inc/fields/typography/field_typography.php:344
+msgid "Text Align"
+msgstr ""
+
+#: admin/redux/inc/fields/typography/field_typography.php:365
+#: admin/redux/inc/fields/typography/field_typography.php:366
+#: admin/redux/inc/fields/typography/field_typography.php:367
+msgid "Text Transform"
+msgstr ""
+
+#: admin/redux/inc/fields/typography/field_typography.php:388
+#: admin/redux/inc/fields/typography/field_typography.php:389
+#: admin/redux/inc/fields/typography/field_typography.php:390
+msgid "Font Variant"
+msgstr ""
+
+#: admin/redux/inc/fields/typography/field_typography.php:408
+#: admin/redux/inc/fields/typography/field_typography.php:409
+#: admin/redux/inc/fields/typography/field_typography.php:410
+msgid "Text Decoration"
+msgstr ""
+
+#: admin/redux/inc/fields/typography/field_typography.php:432
+#: admin/redux/inc/fields/typography/field_typography.php:433
+msgid "Font Size"
+msgstr ""
+
+#: admin/redux/inc/fields/typography/field_typography.php:433
+msgid "Size"
+msgstr ""
+
+#: admin/redux/inc/fields/typography/field_typography.php:441
+#: admin/redux/inc/fields/typography/field_typography.php:442
+msgid "Line Height"
+msgstr ""
+
+#: admin/redux/inc/fields/typography/field_typography.php:442
+msgid "Height"
+msgstr ""
+
+#: admin/redux/inc/fields/typography/field_typography.php:450
+#: admin/redux/inc/fields/typography/field_typography.php:451
+msgid "Word Spacing"
+msgstr ""
+
+#: admin/redux/inc/fields/typography/field_typography.php:459
+#: admin/redux/inc/fields/typography/field_typography.php:460
+msgid "Letter Spacing"
+msgstr ""
+
+#: admin/redux/inc/fields/typography/field_typography.php:478
+msgid "Font Color"
+msgstr ""
+
+#: admin/redux/inc/fields/typography/field_typography.php:480
+msgid "Font color"
+msgstr ""
+
+#: admin/redux/inc/fields/typography/field_typography.php:890
+msgid "Standard Fonts"
+msgstr ""
+
+#: admin/redux/inc/fields/typography/field_typography.php:991
+msgid "Google Webfonts"
+msgstr ""
+
+#: admin/redux/inc/themecheck/checks/embedded.php:15
+#, php-format
+msgid "<span class=\"tc-lead tc-recommended\">RECOMMENDED</span>: If you are submitting to WordPress.org Theme Repository, it is <strong>strongly</strong> suggested that you read <a href=\"%s\" target=\"_blank\">this document</a>, or your theme will be rejected because of Redux."
+msgstr ""
+
+#: admin/redux/inc/themecheck/checks/embedded.php:24
+#, php-format
+msgid "<span class=\"tc-lead tc-required\">REQUIRED</span>: You MUST delete <strong> %s </strong>, or your theme will be rejected by WP.org theme submission because of Redux."
+msgstr ""
+
+#: admin/redux/inc/themecheck/checks/embedded.php:38
+msgid "Optional"
+msgstr ""
+
+#: admin/redux/inc/themecheck/checks/embedded.php:40
+msgid "<span class=\"tc-lead tc-recommended\">RECOMMENDED</span>: The following arguments MUST be used for WP.org submissions, or you will be rejected because of your Redux configuration."
+msgstr ""
+
+#: admin/redux/inc/themecheck/checks/full_package.php:16
+msgid "Redux localization utilities"
+msgstr ""
+
+#: admin/redux/inc/themecheck/checks/full_package.php:17
+msgid "Redux Resting Diles"
+msgstr ""
+
+#: admin/redux/inc/themecheck/checks/full_package.php:18
+msgid "Redux Code Styles"
+msgstr ""
+
+#: admin/redux/inc/themecheck/checks/full_package.php:19
+msgid "Redux Unit Testing"
+msgstr ""
+
+#: admin/redux/inc/themecheck/checks/full_package.php:20
+msgid "Redux Plugin File"
+msgstr ""
+
+#: admin/redux/inc/themecheck/checks/full_package.php:21
+msgid "Redux Boostrap Tests"
+msgstr ""
+
+#: admin/redux/inc/themecheck/checks/full_package.php:22
+msgid "CI Testing FIle"
+msgstr ""
+
+#: admin/redux/inc/themecheck/checks/full_package.php:23
+msgid "PHP Unit Testing"
+msgstr ""
+
+#: admin/redux/inc/themecheck/checks/full_package.php:36
+msgid "It appears that you have embedded the full Redux package inside your theme. You need only embed the <strong>ReduxCore</strong> folder. Embedding anything else will get your rejected from theme submission. Suspected Redux package file(s):"
+msgstr ""
+
+#: admin/redux/inc/validation/color/validation_color.php:15
+#: admin/redux/inc/validation/color_rgba/validation_color_rgba.php:14
+#: admin/redux/inc/validation/colorrgba/validation_colorrgba.php:16
+msgid "This field must be a valid color value."
+msgstr ""
+
+#: admin/redux/inc/validation/comma_numeric/validation_comma_numeric.php:16
+msgid "You must provide a comma separated list of numerical values for this option."
+msgstr ""
+
+#: admin/redux/inc/validation/css/validation_css.php:39
+msgid "Unsafe strings were found in your CSS and have been filtered out."
+msgstr ""
+
+#: admin/redux/inc/validation/date/validation_date.php:16
+msgid "This field must be a valid date."
+msgstr ""
+
+#: admin/redux/inc/validation/email/validation_email.php:16
+#: admin/redux/inc/validation/email_not_empty/validation_email_not_empty.php:16
+msgid "You must provide a valid email for this option."
+msgstr ""
+
+#: admin/redux/inc/validation/no_html/validation_no_html.php:15
+msgid "You must not enter any HTML in this field, all HTML tags have been removed."
+msgstr ""
+
+#: admin/redux/inc/validation/no_special_chars/validation_no_special_chars.php:16
+msgid "You must not enter any special characters in this field, all special characters have been removed."
+msgstr ""
+
+#: admin/redux/inc/validation/not_empty/validation_not_empty.php:16
+msgid "This field cannot be empty. Please provide a value."
+msgstr ""
+
+#: admin/redux/inc/validation/numeric/validation_numeric.php:16
+#: admin/redux/inc/validation/numeric_not_empty/validation_numeric_not_empty.php:16
+msgid "You must provide a numerical value for this option."
+msgstr ""
+
+#: admin/redux/inc/validation/unique_slug/validation_unique_slug.php:16
+#, php-format
+msgid "That URL slug is in use, please choose another. <code>%s</code> is open for use."
+msgstr ""
+
+#: admin/redux/inc/validation/url/validation_url.php:16
+msgid "You must provide a valid URL for this option."
+msgstr ""
+
+#: admin/redux/templates/panel/footer.tpl.php:57
+#: admin/redux/templates/panel/header_stickybar.tpl.php:21
+msgid "Save Changes"
+msgstr ""
+
+#: admin/redux/templates/panel/footer.tpl.php:61
+#: admin/redux/templates/panel/header_stickybar.tpl.php:25
+msgid "Reset Section"
+msgstr ""
+
+#: admin/redux/templates/panel/footer.tpl.php:62
+#: admin/redux/templates/panel/header_stickybar.tpl.php:26
+msgid "Reset All"
+msgstr ""
+
+#: admin/redux/templates/panel/footer.tpl.php:67
+#: admin/redux/templates/panel/header_stickybar.tpl.php:29
+msgid "Working..."
+msgstr ""
+
+#: admin/redux/templates/panel/header.tpl.php:11
+#: admin/redux/templates/panel/header.tpl.php:49
+msgid "Developer Mode Enabled"
+msgstr ""
+
+#: admin/redux/templates/panel/header.tpl.php:20
+msgid "WP_DEBUG is enabled"
+msgstr ""
+
+#: admin/redux/templates/panel/header.tpl.php:26
+msgid "you are working in a localhost environment"
+msgstr ""
+
+#: admin/redux/templates/panel/header.tpl.php:31
+msgid "and"
+msgstr ""
+
+#: admin/redux/templates/panel/header.tpl.php:34
+msgid "This has been automatically enabled because"
+msgstr ""
+
+#: admin/redux/templates/panel/header.tpl.php:36
+msgid "If you are not a developer, your theme/plugin author shipped with developer mode enabled. Contact them directly to fix it."
+msgstr ""
+
+#: admin/redux/templates/panel/header.tpl.php:58
+msgid "FORCED DEV MODE OFF ENABLED"
+msgstr ""
+
+#: admin/redux/templates/panel/header_stickybar.tpl.php:15
+msgid "Expand"
+msgstr ""
+
+#: classes/kt_activation/kadence-plugin-api-manager.php:165
+#: classes/kt_activation/kadence-plugin-api-manager.php:171
+msgid "The following plugins have not been activated: "
+msgstr ""
+
+#: classes/kt_activation/kadence-plugin-api-manager.php:165
+#: classes/kt_activation/kadence-plugin-api-manager.php:171
+msgid "Click here to activate."
+msgstr ""
+
+#: classes/kt_activation/kadence-plugin-api-manager.php:358
+#, php-format
+msgid "<b>Warning!</b> You're blocking external requests which means you won't be able to get certain plugin updates. Please add %s to %s."
+msgstr ""
+
+#: classes/kt_activation/kadence-plugin-api-manager.php:386
+msgid "Kadence Plugin Activation."
+msgstr ""
+
+#: classes/kt_activation/kadence-plugin-api-manager.php:389
+#, php-format
+msgid "Activating your license allows for plugin updates. If you need your api key you will find it by logging in to your %s Kadence WP account%s."
+msgstr ""
+
+#: classes/kt_activation/kadence-plugin-api-manager.php:394
+msgid "Activated"
+msgstr ""
+
+#: classes/kt_activation/kadence-plugin-api-manager.php:396
+msgid "Could Not Activate"
+msgstr ""
+
+#: classes/kt_activation/kadence-plugin-api-manager.php:398
+msgid "Deactivated"
+msgstr ""
+
+#: classes/kt_activation/kadence-plugin-api-manager.php:400
+msgid "Could Not Deactivate, Try again."
+msgstr ""
+
+#: classes/kt_activation/kadence-plugin-api-manager.php:413
+msgid "Kadence Membership activated through theme"
+msgstr ""
+
+#: classes/kt_activation/kadence-plugin-api-manager.php:414
+msgid " Status: Active"
+msgstr ""
+
+#: classes/kt_activation/kadence-plugin-api-manager.php:421
+#: classes/kt_activation/kadence-plugin-api-manager.php:429
+msgid "Activate"
+msgstr ""
+
+#: classes/kt_activation/kadence-plugin-api-manager.php:438
+#: classes/kt_activation/kadence-plugin-api-manager.php:444
+msgid "Deactivate"
+msgstr ""
+
+#: classes/kt_activation/kadence-plugin-api-manager.php:518
+msgid "API License Activation"
+msgstr ""
+
+#: classes/kt_activation/kadence-plugin-api-manager.php:520
+msgid "API License Key"
+msgstr ""
+
+#: classes/kt_activation/kadence-plugin-api-manager.php:521
+msgid "API License Email"
+msgstr ""
+
+#: classes/kt_activation/kadence-plugin-api-manager.php:526
+msgid "Check box to deactivate API License key"
+msgstr ""
+
+#: classes/kt_activation/kadence-plugin-api-manager.php:656
+msgid "Missing API Key, PLease add. "
+msgstr ""
+
+#: classes/kt_activation/kadence-plugin-api-manager.php:660
+msgid "Missing API Email, PLease add. "
+msgstr ""
+
+#: classes/kt_activation/kadence-plugin-api-manager.php:672
+msgid "Plugin activated."
+msgstr ""
+
+#: classes/kt_activation/kadence-plugin-api-manager.php:682
+#: classes/kt_activation/kadence-plugin-api-manager.php:766
+msgid "Connection failed to the License Key API server. Make sure your host servers php version has the curl module installed and enabled."
+msgstr ""
+
+#: classes/kt_activation/kadence-plugin-api-manager.php:740
+msgid "Please check box to deactivate. "
+msgstr ""
+
+#: classes/kt_activation/kadence-plugin-api-manager.php:760
+#: classes/kt_activation/kadence-plugin-api-manager.php:809
+msgid "License deactivated."
+msgstr ""
+
+#: classes/media-category/media-taxonomies.php:100 kadence-galleries.php:939
+msgid "All"
+msgstr ""
+
+#: classes/media-category/media-taxonomies.php:187
+#: classes/media-category/media-taxonomies.php:197
+msgid "Categories"
+msgstr ""
+
+#: classes/media-category/media-taxonomies.php:188
+msgid "Category"
+msgstr ""
+
+#: classes/media-category/media-taxonomies.php:189
+msgid "Search Categories"
+msgstr ""
+
+#: classes/media-category/media-taxonomies.php:190
+msgid "All Categories"
+msgstr ""
+
+#: classes/media-category/media-taxonomies.php:191
+msgid "Parent Category"
+msgstr ""
+
+#: classes/media-category/media-taxonomies.php:192
+msgid "Parent Category:"
+msgstr ""
+
+#: classes/media-category/media-taxonomies.php:193
+msgid "Edit Category"
+msgstr ""
+
+#: classes/media-category/media-taxonomies.php:194
+msgid "Update Category"
+msgstr ""
+
+#: classes/media-category/media-taxonomies.php:195
+msgid "Add New Category"
+msgstr ""
+
+#: classes/media-category/media-taxonomies.php:196
+msgid "New Category Name"
+msgstr ""
+
+#: classes/media-links/media-custom-links.php:21
+msgid "Gallery Link URL"
+msgstr ""
+
+#: classes/media-links/media-custom-links.php:28
+msgid "Gallery Link Target"
+msgstr ""
+
+#: classes/media-links/media-custom-links.php:32
+msgid "Do Not Change"
+msgstr ""
+
+#: classes/media-links/media-custom-links.php:33
+msgid "Same Window"
+msgstr ""
+
+#: classes/media-links/media-custom-links.php:34
+msgid "New Window"
+msgstr ""
+
+#: kadence-galleries.php:252
+msgid "Kadence Galleries"
+msgstr ""
+
+#: kadence-galleries.php:253
+msgid "Kadence Gallery"
+msgstr ""
+
+#: kadence-galleries.php:254 kadence-galleries.php:255
+msgid "Add New Gallery"
+msgstr ""
+
+#: kadence-galleries.php:256
+msgid "Edit Gallery"
+msgstr ""
+
+#: kadence-galleries.php:257
+msgid "New Gallery"
+msgstr ""
+
+#: kadence-galleries.php:258
+msgid "All Galleries"
+msgstr ""
+
+#: kadence-galleries.php:259
+msgid "View Gallery"
+msgstr ""
+
+#: kadence-galleries.php:260
+msgid "Search Galleries"
+msgstr ""
+
+#: kadence-galleries.php:261
+msgid "No Gallery found"
+msgstr ""
+
+#: kadence-galleries.php:262
+msgid "No Gallery found in Trash"
+msgstr ""
+
+#: kadence-galleries.php:264
+msgid "K Galleries"
+msgstr ""
+
+#: kadence-galleries.php:291
+msgid "Gallery Albums"
+msgstr ""
+
+#: kadence-galleries.php:292 kadence-galleries.php:323
+msgid "Album"
+msgstr ""
+
+#: kadence-galleries.php:293
+msgid "Search Albums"
+msgstr ""
+
+#: kadence-galleries.php:294
+msgid "All Albums"
+msgstr ""
+
+#: kadence-galleries.php:295
+msgid "Parent Album"
+msgstr ""
+
+#: kadence-galleries.php:296
+msgid "Parent Album:"
+msgstr ""
+
+#: kadence-galleries.php:297
+msgid "Edit Album"
+msgstr ""
+
+#: kadence-galleries.php:298
+msgid "Update Album"
+msgstr ""
+
+#: kadence-galleries.php:299
+msgid "Add New Album"
+msgstr ""
+
+#: kadence-galleries.php:300
+msgid "New Album Name"
+msgstr ""
+
+#: kadence-galleries.php:321
+msgid "Shortcode"
+msgstr ""
+
+#: kadence-galleries.php:322
+msgid "Featured Image"
+msgstr ""
+
+#: kadence-galleries.php:345 kadence-galleries.php:356
+msgid "None set"
+msgstr ""
+
+#: kadence-galleries.php:366
+msgid "No album set"
+msgstr ""
+
+#: kadence-galleries.php:723 kadence-galleries.php:958
+msgid "Loading Images"
+msgstr ""
+
+#: kadence-galleries.php:1066
+msgid "Pin to Pinterest"
+msgstr ""
+
+#: kadence-galleries.php:1106
+msgid "Gallery Page Navigation"
+msgstr ""
+
+#: kadence-galleries.php:1147
+msgid "Close"
+msgstr ""
+
+#: kadence-galleries.php:1148
+msgid "Share"
+msgstr ""
+
+#: kadence-galleries.php:1149
+msgid "Toggle fullscreen"
+msgstr ""
+
+#: kadence-galleries.php:1150
+msgid "Zoom in/out"
+msgstr ""
+
+#: kadence-galleries.php:1151
+msgid "Previous"
+msgstr ""
+
+#: kadence-galleries.php:1152
+msgid "Next"
+msgstr ""
+
+#: kadence-galleries.php:1153
+msgid "Show full caption"
+msgstr ""
+
+#: kadence-galleries.php:1154
+msgid "Minimize caption"
+msgstr ""
+
+#: kadence-galleries.php:1178
+msgid "Add/Edit Gallery"
+msgstr ""
+
+#: kadence-galleries.php:1179
+msgid "Clear Gallery"
+msgstr ""
+
+#: kadence-galleries.php:1198
+msgid "None Selected"
+msgstr ""
+
+#: kadence-galleries.php:1216
+msgid "Select/Change Gallery"
+msgstr ""
+
+#: kadence-galleries.php:1279
+msgid "Gallery Shortcode"
+msgstr ""
+
+#: kadence-galleries.php:1288
+msgid "Gallery Source"
+msgstr ""
+
+#: kadence-galleries.php:1292
+msgid "Local - Add Photos below"
+msgstr ""
+
+#: kadence-galleries.php:1293
+msgid "External (PhotoShelter)"
+msgstr ""
+
+#: kadence-galleries.php:1299 kadence-galleries.php:1324
+msgid "Gallery Images"
+msgstr ""
+
+#: kadence-galleries.php:1300 kadence-galleries.php:1325
+msgid "Add images for gallery here"
+msgstr ""
+
+#: kadence-galleries.php:1311
+msgid "Photoshelter Gallery"
+msgstr ""
+
+#: kadence-galleries.php:1312
+msgid "Select a Gallery from your photoshelter account"
+msgstr ""
+
+#: kadence-galleries.php:1333
+msgid "Gallery Image Style"
+msgstr ""
+
+#: kadence-galleries.php:1338
+msgid "Masonry (Image defined ratio)"
+msgstr ""
+
+#: kadence-galleries.php:1339
+msgid "Square"
+msgstr ""
+
+#: kadence-galleries.php:1340
+msgid "Portrait"
+msgstr ""
+
+#: kadence-galleries.php:1341
+msgid "Landscape"
+msgstr ""
+
+#: kadence-galleries.php:1342
+msgid "Wide Landscape"
+msgstr ""
+
+#: kadence-galleries.php:1343
+msgid "Tiles (Image defined ratio)"
+msgstr ""
+
+#: kadence-galleries.php:1344
+msgid "Mosaic"
+msgstr ""
+
+#: kadence-galleries.php:1350
+msgid "Columns"
+msgstr ""
+
+#: kadence-galleries.php:1355 kadence-galleries.php:1375
+#: kadence-galleries.php:1395
+msgid "Three Columns (3)"
+msgstr ""
+
+#: kadence-galleries.php:1356 kadence-galleries.php:1376
+#: kadence-galleries.php:1396
+msgid "Four Columns (4)"
+msgstr ""
+
+#: kadence-galleries.php:1357 kadence-galleries.php:1377
+#: kadence-galleries.php:1397
+msgid "Five Columns (5)"
+msgstr ""
+
+#: kadence-galleries.php:1358 kadence-galleries.php:1378
+#: kadence-galleries.php:1398
+msgid "Six Columns (6)"
+msgstr ""
+
+#: kadence-galleries.php:1359 kadence-galleries.php:1379
+#: kadence-galleries.php:1399
+msgid "Two Columns (2)"
+msgstr ""
+
+#: kadence-galleries.php:1360 kadence-galleries.php:1380
+#: kadence-galleries.php:1400
+msgid "One Columns (1)"
+msgstr ""
+
+#: kadence-galleries.php:1370
+msgid "Columns for Tablet screen sizes"
+msgstr ""
+
+#: kadence-galleries.php:1390
+msgid "Columns for Mobile screen sizes"
+msgstr ""
+
+#: kadence-galleries.php:1410
+msgid "Height of tiles row"
+msgstr ""
+
+#: kadence-galleries.php:1422
+msgid "Caption in gallery grid"
+msgstr ""
+
+#: kadence-galleries.php:1427
+msgid "Do not Show"
+msgstr ""
+
+#: kadence-galleries.php:1428
+msgid "Show on image hover (bottom)"
+msgstr ""
+
+#: kadence-galleries.php:1429
+msgid "Show on image hover (center)"
+msgstr ""
+
+#: kadence-galleries.php:1436
+msgid "Set Link for Images"
+msgstr ""
+
+#: kadence-galleries.php:1441
+msgid "Lightbox"
+msgstr ""
+
+#: kadence-galleries.php:1442
+msgid "Single Photoshelter page"
+msgstr ""
+
+#: kadence-galleries.php:1452 kadence-galleries.php:1485
+msgid "Add Image Title to Caption"
+msgstr ""
+
+#: kadence-galleries.php:1457 kadence-galleries.php:1473
+#: kadence-galleries.php:1490 kadence-galleries.php:1502
+#: kadence-galleries.php:1516 kadence-galleries.php:1550
+#: kadence-galleries.php:1567 kadence-galleries.php:1581
+#: kadence-galleries.php:1631
+msgid "False"
+msgstr ""
+
+#: kadence-galleries.php:1458 kadence-galleries.php:1474
+#: kadence-galleries.php:1491 kadence-galleries.php:1503
+#: kadence-galleries.php:1517 kadence-galleries.php:1551
+#: kadence-galleries.php:1568 kadence-galleries.php:1582
+#: kadence-galleries.php:1632
+msgid "True"
+msgstr ""
+
+#: kadence-galleries.php:1468 kadence-galleries.php:1497
+msgid "Add Image Category Name(s) to Caption"
+msgstr ""
+
+#: kadence-galleries.php:1510
+msgid "Add image category filter to gallery"
+msgstr ""
+
+#: kadence-galleries.php:1511
+msgid "All Images must have an assigned category"
+msgstr ""
+
+#: kadence-galleries.php:1527
+msgid "Choose which categories to filter"
+msgstr ""
+
+#: kadence-galleries.php:1545 kadence-galleries.php:1562
+msgid "Include Pinterest Button on Images"
+msgstr ""
+
+#: kadence-galleries.php:1576 kadence-galleries.php:1626
+msgid "Turn on Pagination"
+msgstr ""
+
+#: kadence-galleries.php:1592 kadence-galleries.php:1638
+msgid "Items Per Page"
+msgstr ""
+
+#: kadence-galleries.php:1721 kadence-galleries.php:1722
+msgid "PhotoShelter Login"
+msgstr ""
+
+#: kadence-galleries.php:1743
+msgid "Log In"
+msgstr ""
+
+#: kadence-galleries.php:1764
+msgid "Log in as another user"
+msgstr ""
+
+#: kadence-galleries.php:1773
+#, php-format
+msgid "You may now add photos from your %s account."
+msgstr ""
+
+#: kadence-galleries.php:1777
+msgid "You may now add photos from your single-user account."
+msgstr ""
+
+#: kadence-galleries.php:1819
+msgid "PhotoShelter Email"
+msgstr ""
+
+#: kadence-galleries.php:1821
+msgid "Password"
+msgstr ""
+
+#: kadence-galleries.php:1824
+msgid "Authorize"
+msgstr ""
+
+#: photoshelter/photoshelter_client.php:38
+msgid "Invalid Login"
+msgstr ""

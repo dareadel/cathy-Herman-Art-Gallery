@@ -1,0 +1,295 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "kadence/marquee",
+  "title": "Marquee (Adv)",
+  "category": "kadence-blocks",
+  "description": "Create a scrolling marquee with customizable content.",
+  "keywords": [
+    "marquee",
+    "scrolling",
+    "banner"
+  ],
+  "textdomain": "kadence-creative-kit",
+  "supports": {
+    "html": false,
+    "anchor": true
+  },
+  "attributes": {
+    "uniqueID": {
+      "type": "string"
+    },
+    "itemCount": {
+      "type": "number",
+      "default": 3
+    },
+    "orientation": {
+      "type": "string",
+      "default": "horizontal"
+    },
+    "direction": {
+      "type": "string",
+      "default": "left"
+    },
+    "speed": {
+      "type": "number",
+      "default": 25
+    },
+    "pauseOnHover": {
+      "type": "boolean",
+      "default": false
+    },
+    "gap": {
+      "type": "number",
+      "default": 20
+    },
+    "gapTablet": {
+      "type": "number"
+    },
+    "gapMobile": {
+      "type": "number"
+    },
+    "gapUnit": {
+      "type": "string",
+      "default": "px"
+    },
+    "height": {
+      "type": "array",
+      "default": [
+        100,
+        100,
+        100
+      ]
+    },
+    "heightUnit": {
+      "type": "string",
+      "default": "px"
+    },
+    "itemWidth": {
+      "type": "array",
+      "default": [
+        "100",
+        "100",
+        "100"
+      ]
+    },
+    "itemWidthUnit": {
+      "type": "string",
+      "default": "%"
+    },
+    "background": {
+      "type": "string",
+      "default": ""
+    },
+    "backgroundType": {
+      "type": "string",
+      "default": "normal"
+    },
+    "backgroundGradient": {
+      "type": "string"
+    },
+    "margin": {
+      "type": "array",
+      "default": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    "tabletMargin": {
+      "type": "array",
+      "default": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    "mobileMargin": {
+      "type": "array",
+      "default": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    "padding": {
+      "type": "array",
+      "default": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    "tabletPadding": {
+      "type": "array",
+      "default": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    "mobilePadding": {
+      "type": "array",
+      "default": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    "paddingUnit": {
+      "type": "string",
+      "default": "px"
+    },
+    "marginUnit": {
+      "type": "string",
+      "default": "px"
+    },
+    "maxWidth": {
+      "type": "array",
+      "default": [
+        "",
+        "",
+        ""
+      ]
+    },
+    "maxWidthUnit": {
+      "type": "string",
+      "default": "px"
+    },
+    "kbVersion": {
+      "type": "number",
+      "default": 2
+    },
+    "transition": {
+      "type": "boolean",
+      "default": true
+    },
+    "transitionDistance": {
+      "type": "array",
+      "default": [
+        100,
+        60,
+        40
+      ]
+    },
+    "transitionDistanceUnit": {
+      "type": "string",
+      "default": "px"
+    },
+    "showPlayPause": {
+      "type": "boolean",
+      "default": false
+    },
+    "pauseButtonPadding": {
+      "type": "array",
+      "default": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    "tabletPauseButtonPadding": {
+      "type": "array",
+      "default": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    "mobilePauseButtonPadding": {
+      "type": "array",
+      "default": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    "pauseButtonPaddingType": {
+      "type": "string",
+      "default": "px"
+    },
+    "pauseButtonBackground": {
+      "type": "string",
+      "default": ""
+    },
+    "pauseButtonColor": {
+      "type": "string",
+      "default": ""
+    },
+    "zIndex": {
+      "type": "number",
+      "default": ""
+    },
+    "borderRadius": {
+      "type": "array",
+      "default": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    "tabletBorderRadius": {
+      "type": "array",
+      "default": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    "mobileBorderRadius": {
+      "type": "array",
+      "default": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    "borderRadiusUnit": {
+      "type": "string",
+      "default": "px"
+    }
+  },
+  "innerBlocks": [
+    {
+      "name": "kadence/marquee-item",
+      "attributes": {
+        "id": 1
+      }
+    },
+    {
+      "name": "kadence/marquee-item",
+      "attributes": {
+        "id": 2
+      }
+    },
+    {
+      "name": "kadence/marquee-item",
+      "attributes": {
+        "id": 3
+      }
+    }
+  ],
+  "example": {
+    "attributes": {
+      "itemCount": 3,
+      "orientation": "horizontal",
+      "direction": "left",
+      "speed": 25
+    }
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
+}
