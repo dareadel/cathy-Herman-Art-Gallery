@@ -19,8 +19,10 @@ function cae_register_event_cpt() {
     register_post_type( 'art_event', array(
         'labels'        => $labels,
         'public'        => true,
-        'has_archive'   => false, // Not needed for a one-page site
+        'show_ui'       => true, 
+        'show_in_menu'  => true, 
+        'has_archive'   => false, 
         'menu_icon'     => 'dashicons-calendar-alt',
-        'supports'      => array( 'title' ), // Title will be the Event Name
+        'supports'      => array( 'title' ), 
     ));
 }
