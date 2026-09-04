@@ -3,7 +3,7 @@ Contributors: britner, oakesjosh, woodardmc
 Tags: gutenberg, blocks, page builder, google fonts, dual buttons, svg icons, editor width,
 Requires at least: 6.6
 Tested up to: 7.0
-Stable tag: 2.8.17
+Stable tag: 2.8.18
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -39,6 +39,11 @@ assist you with verification, CVE assignment, and notify the
 developers of this plugin.
 
 == Changelog ==
+= 2.8.18 =
+Release Date: 2nd September 2026
+* Fix: Query Loop ignored the Limit by Taxonomy setting when the selected taxonomy was not publicly queryable, listing every post of the chosen post type instead of the matching ones (the limit now applies to those taxonomies as well).
+* Fix: Query Loop pagination links were announced only as bare page numbers or a generic Previous/Next by screen readers (each link now names the page it leads to, and the pagination landmark is labelled Posts pagination).
+
 = 2.8.17 =
 Release Date: 24th June 2026
 * Fix: Advanced Slider block editor not syncing to the correct slide when selecting inner blocks (the slider now navigates to the selected slide automatically).

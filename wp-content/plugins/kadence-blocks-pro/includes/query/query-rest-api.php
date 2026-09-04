@@ -564,7 +564,8 @@ class Kadence_Blocks_Query_Loop_CPT_Rest_Controller extends WP_REST_Posts_Contro
 					}
 					$taxonomy_slug = sanitize_key( $tax_parts[0] );
 					$term_id       = absint( $tax_parts[1] );
-					if ( ! $taxonomy_slug || ! $term_id || ! taxonomy_exists( $taxonomy_slug ) || ! is_taxonomy_viewable( $taxonomy_slug ) ) {
+					/* This limit is author-configured, so a taxonomy that is not publicly queryable is still a valid constraint. */
+					if ( ! $taxonomy_slug || ! $term_id || ! taxonomy_exists( $taxonomy_slug ) ) {
 						continue;
 					}
 					if ( ! isset( $taxonomy_term_ids[ $taxonomy_slug ] ) ) {

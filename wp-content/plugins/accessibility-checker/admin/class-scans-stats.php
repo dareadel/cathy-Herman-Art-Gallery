@@ -1,0 +1,626 @@
+<?php
+/**
+ * Class file for scans stats
+ *
+ * @package Accessibility_Checker
+ */
+
+namespace EDAC\Admin;
+
+use EqualizeDigital\AccessibilityCheckerPro\Admin\Scans;
+
+/**
+ * Class that handles calculating scans stats
+ */
+class Scans_Stats {
+
+	/**
+	 * Number of seconds to return results from cache.
+	 *
+	 * @var integer
+	 */
+	private $cache_time = 0;
+
+	/**
+	 * Max number of issues to consider for results.
+	 *
+	 * @var integer
+	 */
+	private $record_limit = 100000;
+
+	/**
+	 * Total number of rules that are run on each page during a scan
+	 *
+	 * @var integer
+	 */
+	private $rule_count;
+
+	/**
+	 * Prefix used cache name
+	 *
+	 * @var string
+	 */
+	private $cache_name_prefix;
+
+	/**
+	 * Constructor
+	 *
+	 * @param integer $cache_time number of seconds to return the results from cache.
+	 */
+	public function __construct( $cache_time = 60 * 60 * 24 ) {
+
+		$this->cache_time        = $cache_time;
+		$this->cache_name_prefix = 'edac_scans_stats_' . EDAC_VERSION . '_' . $this->record_limit;
+		$this->rule_count        = count( edac_register_rules() );
+	}
+
+	/**
+	 * Load all stats into the cache. Should be called by a background scheduled.
+	 *
+	 * @return void
+	 */
+	public function load_cache() {
+
+		// Cache the summary.
+		$this->summary();
+
+		// Cache the post_types.
+		$scannable_post_types = Settings::get_scannable_post_types();
+
+		$post_types = get_post_types(
+			[
+				'public' => true,
+			]
+		);
+
+		unset( $post_types['attachment'] );
+
+		foreach ( $post_types as $post_type ) {
+			if ( in_array( $post_type, $scannable_post_types, true ) ) {
+				$this->issues_summary_by_post_type( $post_type );
+			}
+		}
+	}
+
+	/**
+	 * Clear the summary and post type scans stats that have been cached
+	 *
+	 * @return void
+	 */
+	public function clear_cache() {
+
+		// Delete the cached summary stats.
+		$transient_name = $this->cache_name_prefix . '_summary';
+		delete_transient( $transient_name );
+
+		// Delete the cached post_type stats.
+		$post_types = get_post_types(
+			[
+				'public' => true,
+			]
+		);
+		unset( $post_types['attachment'] );
+		foreach ( $post_types as $post_type ) {
+			$transient_name = $this->cache_name_prefix . '_issues_summary_by_post_type_' . $post_type;
+			delete_transient( $transient_name );
+		}
+	}
+
+	/**
+	 * Gets summary information about all scans
+	 *
+	 * @param  boolean $skip_cache whether to skip the cache.
+	 * @return array
+	 */
+	public function summary( $skip_cache = false ) {
+
+		global $wpdb;
+
+		$transient_name = $this->cache_name_prefix . '_summary';
+
+		$cache = get_transient( $transient_name );
+
+		if ( ! $skip_cache && ( $this->cache_time && $cache ) ) {
+
+			if ( $cache['expires_at'] >= time() && $cache['cached_at'] + $this->cache_time >= time()
+			) {
+
+				$full_scan_completed_at = (int) get_option( 'edacp_fullscan_completed_at' );
+				if ( $full_scan_completed_at <= $cache['cached_at'] ) {
+					// There hasn't been a full scan completed since we've cached, so return these results.
+					$cache['cache_hit'] = true;
+					return $cache;
+				}
+			}
+		}
+
+		$data = [];
+
+		$scannable_posts_count = Settings::get_scannable_posts_count();
+		$tests_count           = $scannable_posts_count * $this->rule_count;
+		$siteid                = get_current_blog_id();
+
+		$data['scannable_posts_count']      = (int) $scannable_posts_count;
+		$data['rule_count']                 = (int) $this->rule_count;
+		$data['tests_count']                = (int) $tests_count;
+		$data['scannable_post_types_count'] = (int) count( Settings::get_scannable_post_types( true ) );
+
+		$post_types = get_post_types(
+			[
+				'public' => true,
+			]
+		);
+		unset( $post_types['attachment'] );
+
+		$data['public_post_types_count'] = (int) count( $post_types );
+
+		$issues_query = new Issues_Query( [], $this->record_limit, Issues_Query::FLAG_INCLUDE_ALL_POST_TYPES );
+
+		// Count total unique meta values from postmeta table where the meta_key is _edac_issue_density.
+		// This will give us the total number of posts that have been scanned.
+		$data['posts_scanned'] = (int) $wpdb->get_var( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Using direct query for adding data to database, caching not required for one time operation.
+			$wpdb->prepare(
+				'SELECT COUNT(DISTINCT %i) FROM %i WHERE meta_key = %s',
+				'post_id',
+				$wpdb->postmeta,
+				'_edac_issue_density'
+			)
+		);
+
+
+		$data['is_truncated']      = $issues_query->has_truncated_results();
+		$data['posts_with_issues'] = (int) $issues_query->distinct_posts_count();
+		$data['rules_failed']      = 0;
+
+		// Get a count of rules that are not in the issues table.
+		$rule_slugs = array_map(
+			function ( $item ) {
+				return $item['slug'];
+			},
+			edac_register_rules()
+		);
+
+		foreach ( $rule_slugs as $rule_slug ) {
+			$rule_query = new Issues_Query(
+				[
+					'rule_slugs' => [ $rule_slug ],
+					'post_types' => Settings::get_scannable_post_types(),
+				],
+				1
+			);
+
+			if ( $rule_query->count() ) {
+					++$data['rules_failed'];
+			}
+		}
+		$data['rules_passed'] = $this->rule_count - $data['rules_failed'];
+
+		$data['passed_percentage'] = 'N/A';
+		$scannable_post_types      = Settings::get_scannable_post_types();
+		if ( ! empty( $scannable_post_types ) && $data['posts_scanned'] > 0 && $tests_count > 0 ) {
+			$data['passed_percentage'] = round( ( $data['rules_passed'] / $this->rule_count ) * 100, 2 );
+		}
+
+		$warning_issues_query      = new Issues_Query(
+			[
+				'post_types' => Settings::get_scannable_post_types(),
+				'rule_types' => [ Issues_Query::RULETYPE_WARNING ],
+			],
+			$this->record_limit
+		);
+		$data['warnings']          = (int) $warning_issues_query->count();
+		$data['distinct_warnings'] = (int) $warning_issues_query->distinct_count();
+
+		$contrast_issues_query = new Issues_Query(
+			[
+				'post_types' => Settings::get_scannable_post_types(),
+				'rule_types' => [ Issues_Query::RULETYPE_COLOR_CONTRAST ],
+			],
+			$this->record_limit
+		);
+
+		$data['contrast_errors']          = (int) $contrast_issues_query->count();
+		$data['distinct_contrast_errors'] = (int) $contrast_issues_query->distinct_count();
+
+		$error_issues_query      = new Issues_Query(
+			[
+				'post_types' => Settings::get_scannable_post_types(),
+				'rule_types' => [ Issues_Query::RULETYPE_ERROR ],
+			],
+			$this->record_limit
+		);
+		$data['errors']          = (int) $error_issues_query->count();
+		$data['distinct_errors'] = (int) $error_issues_query->distinct_count();
+
+		$data['errors_without_contrast']          = $data['errors'] - $data['contrast_errors'];
+		$data['distinct_errors_without_contrast'] = $data['distinct_errors'] - $data['distinct_contrast_errors'];
+
+		$ignored_issues_query         = new Issues_Query(
+			[
+				'post_types' => Settings::get_scannable_post_types(),
+			],
+			$this->record_limit,
+			Issues_Query::FLAG_ONLY_IGNORED
+		);
+		$data['ignored']              = (int) $ignored_issues_query->count();
+		$data['distinct_ignored']     = (int) $ignored_issues_query->distinct_count();
+		$data['posts_without_issues'] = 0;
+		$data['avg_issues_per_post']  = 0;
+
+		if ( $data['posts_scanned'] > 0
+			&& ! empty( Settings::get_scannable_post_types() )
+			&& ! empty( Settings::get_scannable_post_statuses() )
+		) {
+			$ac_table_name = $wpdb->prefix . 'accessibility_checker';
+
+			$posts_without_issues = "
+				SELECT COUNT({$wpdb->posts}.ID) FROM {$wpdb->posts}
+				LEFT JOIN " . $wpdb->prefix . "accessibility_checker ON {$wpdb->posts}.ID = " .
+				$wpdb->prefix . 'accessibility_checker.postid WHERE ' .
+				$wpdb->prefix . 'accessibility_checker.postid IS NULL
+				AND post_type IN(' .
+					Helpers::array_to_sql_safe_list(
+						Settings::get_scannable_post_types()
+					) . ')
+				AND post_status IN(' .
+					Helpers::array_to_sql_safe_list(
+						Settings::get_scannable_post_statuses()
+					) . ')';
+
+			// give me sql that will find all post ids in the accessibility_checker table
+			// where ALL issues with that ID are eiter ignored or globally ignored.
+			$posts_with_just_ignored_issues = $wpdb->prepare(
+				'SELECT COUNT( DISTINCT postid )
+				FROM %i
+				WHERE siteid = %d
+				AND postid NOT IN (
+				  	SELECT postid
+				  	FROM %i
+				  	WHERE ignre=0 AND ignre_global=0
+				)',
+				[ $ac_table_name, $siteid, $ac_table_name ]
+			);
+
+			// phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Using direct query for adding data to database, caching not required for one time operation.
+			$data['posts_without_issues'] = $wpdb->get_var( $posts_without_issues ) + $wpdb->get_var( $posts_with_just_ignored_issues );
+			$data['avg_issues_per_post']  = round( ( $data['warnings'] + $data['errors'] ) / $data['posts_scanned'], 2 );
+
+			// Show "< 1" only when there are issues but the average is less than 1 (excluding exactly 0).
+			if ( $data['avg_issues_per_post'] < 1 && $data['avg_issues_per_post'] > 0 ) {
+				$data['avg_issues_per_post'] = '< 1';
+			}
+		}
+
+		// Average issue density percentage is the sum of all post densities divided by the number of posts scanned.
+		$data['avg_issue_density_percentage'] =
+			$wpdb->get_var( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Using direct query for adding data to database, caching not required for one time operation.
+				$wpdb->prepare(
+					'SELECT AVG(meta_value)
+					FROM ' . $wpdb->postmeta . '
+					JOIN (
+						SELECT DISTINCT postid
+						FROM ' . $wpdb->prefix . 'accessibility_checker
+						WHERE ignre=%d AND ignre_global=%d
+					) AS distinct_posts ON ' . $wpdb->postmeta . '.post_id = distinct_posts.postid
+					WHERE meta_key = %s',
+					[ 0, 0, '_edac_issue_density' ]
+				)
+			);
+
+		if ( null === $data['avg_issue_density_percentage'] ) {
+			$data['avg_issue_density_percentage'] = 'N/A';
+		} else {
+			$data['avg_issue_density_percentage'] = round( $data['avg_issue_density_percentage'], 2 );
+		}
+
+		$data['fullscan_running']      = false;
+		$data['fullscan_state']        = '';
+		$data['fullscan_completed_at'] = 0;
+
+		// For back compat reasons the old class_exists is kept and moved to an else block.
+		// After a few releases the else should be removed.
+		if ( class_exists( '\EqualizeDigital\AccessibilityCheckerPro\Admin\Scans' ) ) {
+			$scans      = new Scans();
+			$scan_state = $scans->scan_state();
+
+			$data['fullscan_state'] = $scan_state;
+			if ( Scans::SCAN_STATE_PHP_SCAN_RUNNING === $scan_state
+				|| Scans::SCAN_STATE_JS_SCAN_RUNNING === $scan_state
+			) {
+				$data['fullscan_running'] = true;
+			}
+			$data['fullscan_completed_at'] = $scans->scan_date( 'php' );
+		} elseif ( class_exists( '\EDACP\Scans' ) ) {
+			$scans      = new \EDACP\Scans();
+			$scan_state = $scans->scan_state();
+
+			$data['fullscan_state'] = $scan_state;
+			if ( \EDACP\Scans::SCAN_STATE_PHP_SCAN_RUNNING === $scan_state
+				|| \EDACP\Scans::SCAN_STATE_JS_SCAN_RUNNING === $scan_state
+			) {
+				$data['fullscan_running'] = true;
+			}
+			$data['fullscan_completed_at'] = $scans->scan_date( 'php' );
+
+		}
+
+		// Get top 5 posts with issues.
+		$data['top_pages_with_issues']    = $this->get_top_pages_with_issues( 5 );
+		$data['top_issues_found_on_site'] = $this->get_top_issues_found_on_site( 10 );
+
+		$data['cache_id']   = $transient_name;
+		$data['cached_at']  = time();
+		$data['expires_at'] = time() + $this->cache_time;
+		$data['cache_hit']  = false;
+
+		// Handle formatting. Assumes all are numbers except for those listed in exceptions.
+		$formatting            = [];
+		$formatting_exceptions = [
+			'is_truncated',
+			'passed_percentage',
+			'avg_issue_density_percentage',
+			'fullscan_running',
+			'fullscan_state',
+			'fullscan_completed_at',
+			'cache_id',
+			'cached_at',
+			'expires_at',
+			'cache_hit',
+			'top_pages_with_issues',
+		];
+
+		foreach ( $data as $key => $value ) {
+			if ( ! in_array( $key, $formatting_exceptions, true ) ) {
+				$formatting[ $key . '_formatted' ] = Helpers::format_number( $value );
+			}
+		}
+
+		// Handle exceptions.
+		$formatting['fullscan_completed_at_formatted'] = 'N/A';
+		if ( $data['fullscan_completed_at'] > 0 ) {
+			$formatting['fullscan_completed_at_formatted'] = Helpers::format_date( $data['fullscan_completed_at'], true );
+		}
+		$formatting['passed_percentage_formatted'] = Helpers::format_percentage( $data['passed_percentage'] );
+
+		// The density should already a percentage value, just add the sign. If not an integer, just return the value which will be 'N/A'.
+		$formatting['avg_issue_density_percentage_formatted'] = is_int( $data['avg_issue_density_percentage'] ) ? $data['avg_issue_density_percentage'] . '%' : $data['avg_issue_density_percentage'];
+
+		$formatting['cached_at_formatted'] = Helpers::format_date( $data['cached_at'], true );
+
+		$data = array_merge( $data, $formatting );
+
+		if ( $data['posts_scanned'] > 0 ) {
+			set_transient( $transient_name, $data, $this->cache_time );
+		} else {
+			// no posts have been scanned, so clear any previously cache results.
+			$this->clear_cache();
+		}
+
+		return $data;
+	}
+
+	/**
+	 * Gets issues summary information about a post type
+	 *
+	 * @param  string $post_type post type.
+	 * @return array .
+	 */
+	public function issues_summary_by_post_type( $post_type ) {
+
+		$transient_name = $this->cache_name_prefix . '_issues_summary_by_post_type_' . $post_type;
+
+		$cache = get_transient( $transient_name );
+
+		if ( $this->cache_time && $cache ) {
+
+			if ( $cache['expires_at'] >= time() && $cache['cached_at'] + $this->cache_time >= time()
+			) {
+
+				$full_scan_completed_at = (int) get_option( 'edacp_fullscan_completed_at' );
+				if ( $full_scan_completed_at <= $cache['cached_at'] ) {
+					// There hasn't been a full scan completed since we've cached, so return these results.
+					$cache['cache_hit'] = true;
+					return $cache;
+				}
+			}
+		}
+
+		$data = [];
+
+		$error_issues_query      = new Issues_Query(
+			[
+				'rule_types' => [ Issues_Query::RULETYPE_ERROR ],
+				'post_types' => [ $post_type ],
+			],
+			$this->record_limit
+		);
+		$data['errors']          = $error_issues_query->count();
+		$data['distinct_errors'] = $error_issues_query->distinct_count();
+
+		$warning_issues_query      = new Issues_Query(
+			[
+				'rule_types' => [ Issues_Query::RULETYPE_WARNING ],
+				'post_types' => [ $post_type ],
+			],
+			$this->record_limit
+		);
+		$data['warnings']          = $warning_issues_query->count();
+		$data['distinct_warnings'] = $warning_issues_query->distinct_count();
+
+		$color_contrast_issues_query      = new Issues_Query(
+			[
+				'rule_types' => [ Issues_Query::RULETYPE_COLOR_CONTRAST ],
+				'post_types' => [ $post_type ],
+			],
+			$this->record_limit
+		);
+		$data['contrast_errors']          = $color_contrast_issues_query->count();
+		$data['distinct_contrast_errors'] = $color_contrast_issues_query->distinct_count();
+
+		$data['errors_without_contrast']          = $data['errors'] - $data['contrast_errors'];
+		$data['distinct_errors_without_contrast'] = $data['distinct_errors'] - $data['distinct_contrast_errors'];
+
+		foreach ( $data as $key => $val ) {
+			$data[ $key . '_formatted' ] = Helpers::format_number( $val );
+		}
+
+		$data['cache_id']   = $transient_name;
+		$data['cached_at']  = time();
+		$data['expires_at'] = time() + $this->cache_time;
+		$data['cache_hit']  = false;
+
+		set_transient( $transient_name, $data, $this->cache_time );
+
+		return $data;
+	}
+
+	/**
+	 * Get top N posts with the most issues.
+	 *
+	 * @param int $limit Number of posts to return (default 5).
+	 * @return array Array of arrays with post_title, post_url, and issue_count.
+	 */
+	private function get_top_pages_with_issues( int $limit = 5 ) {
+		global $wpdb;
+
+		$limit = max( 0, $limit );
+		if ( 0 === $limit ) {
+			return [];
+		}
+
+		$ac_table_name = $wpdb->prefix . 'accessibility_checker';
+		$siteid        = get_current_blog_id();
+
+		// Get scannable post types and statuses to match site scope.
+		$post_types    = Settings::get_scannable_post_types();
+		$post_statuses = Settings::get_scannable_post_statuses();
+
+		// Return empty array if no scannable content is configured.
+		if ( empty( $post_types ) || empty( $post_statuses ) ) {
+			return [];
+		}
+
+		// Build SQL-safe lists for IN clauses (these are sanitized by the helper).
+		$post_types_list    = Helpers::array_to_sql_safe_list( $post_types );
+		$post_statuses_list = Helpers::array_to_sql_safe_list( $post_statuses );
+
+		// Build the SQL query with siteid and post filters.
+		// phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- post_types_list and post_statuses_list are sanitized by Helpers::array_to_sql_safe_list().
+		$sql = $wpdb->prepare(
+			"SELECT %i.ID, %i.post_title, COUNT(%i.id) as issue_count
+			FROM %i
+			INNER JOIN %i ON %i.ID = %i.postid
+			WHERE %i.siteid = %d
+			AND %i.ignre = 0
+			AND %i.ignre_global = 0
+			AND %i.post_type IN({$post_types_list})
+			AND %i.post_status IN({$post_statuses_list})
+			GROUP BY %i.ID
+			ORDER BY issue_count DESC
+			LIMIT %d",
+			$wpdb->posts,
+			$wpdb->posts,
+			$ac_table_name,
+			$wpdb->posts,
+			$ac_table_name,
+			$wpdb->posts,
+			$ac_table_name,
+			$ac_table_name,
+			$siteid,
+			$ac_table_name,
+			$ac_table_name,
+			$wpdb->posts,
+			$wpdb->posts,
+			$wpdb->posts,
+			$limit
+		);
+		// phpcs:enable WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.NotPrepared -- Direct query for stats calculation, SQL is prepared above.
+		$posts = $wpdb->get_results( $sql );
+
+		$result = [];
+		if ( $posts ) {
+			foreach ( $posts as $post ) {
+				$result[] = [
+					'post_title'  => esc_html( $post->post_title ),
+					'post_url'    => esc_url( get_permalink( $post->ID ) ),
+					'issue_count' => (int) $post->issue_count,
+				];
+			}
+		}
+
+		return $result;
+	}
+
+	/**
+	 * Get top N issues found on the site.
+	 *
+	 * @param int $limit Number of issues to return (default 10).
+	 * @return array Array of arrays with rule_slug and issue_count.
+	 */
+	private function get_top_issues_found_on_site( int $limit = 10 ) {
+		global $wpdb;
+
+		$limit = max( 0, $limit );
+		if ( 0 === $limit ) {
+			return [];
+		}
+
+		$ac_table_name = $wpdb->prefix . 'accessibility_checker';
+		$siteid        = get_current_blog_id();
+
+		$rules_raw     = edac_register_rules();
+		$rules_parsed  = [];
+		$severity_case = '0';
+
+		foreach ( $rules_raw as $rule ) {
+			if ( ! isset( $rule['slug'] ) ) {
+				continue;
+			}
+
+			$slug                  = (string) $rule['slug'];
+			$rules_parsed[ $slug ] = $rule;
+			$severity              = isset( $rule['severity'] ) ? (int) $rule['severity'] : 0;
+			$severity_case        .= $wpdb->prepare( ' + (CASE WHEN rule = %s THEN %d ELSE 0 END)', $slug, $severity );
+		}
+
+		// Build the SQL query to get top issues by severity, then count.
+		// phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQL.NotPrepared -- No user input, and table name is properly escaped, severity cases is prepared above.
+		$sql = $wpdb->prepare(
+			'SELECT rule, COUNT(id) AS issue_count, (' . $severity_case . ') AS severity
+			FROM %i
+			WHERE siteid = %d
+			AND ignre = 0
+			AND ignre_global = 0
+			GROUP BY rule
+			ORDER BY severity DESC, issue_count DESC, rule ASC
+			LIMIT %d',
+			$ac_table_name,
+			$siteid,
+			$limit
+		);
+		// phpcs:enable WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.NotPrepared -- Direct query for stats calculation, SQL is prepared above.
+		$issues = $wpdb->get_results( $sql );
+
+		if ( ! $issues ) {
+			return [];
+		}
+
+		return array_map(
+			function ( $issue ) use ( $rules_parsed ) {
+				$rule = $rules_parsed[ $issue->rule ] ?? [];
+
+				return [
+					'rule_nicename' => sanitize_text_field( $rule['title'] ?? $issue->rule ),
+					'rule_slug'     => sanitize_text_field( $rule['slug'] ?? $issue->rule ),
+					'issue_count'   => (int) $issue->issue_count,
+					'severity'      => isset( $rule['severity'] ) ? (int) $rule['severity'] : (int) $issue->severity,
+				];
+			},
+			$issues
+		);
+	}
+}

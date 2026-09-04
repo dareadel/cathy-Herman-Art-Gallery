@@ -1,0 +1,195 @@
+<?php
+/**
+ * Class file for enqueueing frontend styles and scripts.
+ *
+ * @package Accessibility_Checker
+ */
+
+namespace EDAC\Inc;
+
+use EDAC\Admin\Settings;
+
+/**
+ * Class that initializes and handles enqueueing styles and scripts for the frontend.
+ */
+class Enqueue_Frontend {
+
+
+	/**
+	 * Constructor
+	 */
+	public function __construct() {
+	}
+
+
+	/**
+	 * Enqueue the scripts and styles.
+	 */
+	public static function enqueue() {
+		self::maybe_enqueue_frontend_highlighter();
+		self::enqueue_sr_only_styles();
+	}
+
+	/**
+	 * Get the primary color for the current user's admin color scheme.
+	 *
+	 * $_wp_admin_css_colors is only populated in the admin, so we use a
+	 * hardcoded map of the default WordPress color schemes instead.
+	 *
+	 * @return string Hex color value.
+	 */
+	public static function get_admin_theme_color(): string {
+		$scheme = get_user_option( 'admin_color' );
+		$scheme = $scheme ? $scheme : 'fresh';
+
+		$scheme_colors = [
+			'fresh'     => '#0073aa',
+			'light'     => '#04a4cc',
+			'modern'    => '#3858e9',
+			'blue'      => '#096484',
+			'coffee'    => '#46403c',
+			'ectoplasm' => '#523f6d',
+			'midnight'  => '#e14d43',
+			'ocean'     => '#627c83',
+			'sunrise'   => '#cf4944',
+		];
+
+		return $scheme_colors[ $scheme ] ?? '#3858e9';
+	}
+
+	/**
+	 * Enqueue the screen reader only format styles on the frontend.
+	 *
+	 * Loaded on all frontend pages so that text wrapped in .text-format-sr-only
+	 * is visually hidden for sighted users while remaining accessible to screen readers.
+	 *
+	 * @return void
+	 */
+	public static function enqueue_sr_only_styles(): void {
+		if ( is_admin() ) {
+			return;
+		}
+
+		wp_enqueue_style(
+			'edac-sr-only-format',
+			plugin_dir_url( EDAC_PLUGIN_FILE ) . 'build/css/srOnlyFormat.css',
+			[],
+			EDAC_VERSION,
+			'all'
+		);
+	}
+
+	/**
+	 * Enqueue the frontend highlighter.
+	 *
+	 * @return void
+	 */
+	public static function maybe_enqueue_frontend_highlighter() {
+
+		// This loads on all pages, so bail as early as possible. Do checks that don't require DB calls first.
+
+
+		// Don't load on admin pages or in an iframe that is running a pageScan.
+		if (
+			is_admin() ||
+			(
+				isset( $_GET['edac_pageScanner'] ) && // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+				'1' === $_GET['edac_pageScanner'] // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			)
+		) {
+			return;
+		}
+
+		// Don't load on the frontend if we don't have a post to work with.
+		global $post;
+
+		// On a latest-posts homepage the global $post is the first blog post, so using its ID
+		// would misattribute results; pass null and let the filter supply an ID (Pro) or bail.
+		$default_post_id = ( is_home() && is_front_page() )
+			? null
+			: ( is_object( $post ) ? $post->ID : null );
+
+		$post_id = apply_filters( 'edac_filter_frontend_highlight_post_id', $default_post_id );
+
+		if ( null === $post_id ) {
+			return;
+		}
+
+		// Don't load in a customizer preview or if the user lacks the frontend
+		// highlighter capability. A filter can override this to allow anyone to
+		// see it. Deliberately does NOT fall back to current_user_can( 'edit_post' ):
+		// Editors and self-editing Authors satisfy that on virtually any post, which
+		// would let the historical fallback silently override a role's Permissions
+		// tab setting for edac_view_frontend_highlighter (PRO-1290).
+		if (
+			is_customize_preview() ||
+			(
+				/**
+				 * Filter the visibility of the frontend highlighter.
+				 *
+				 * 'edac_filter_frontend_highlighter_visibility' is a filter that can be used
+				 * to allow users without edit permissions on the post to see the frontend
+				 * highlighter. You can use the filter to perform additional permission checks
+				 * on who can see it.
+				 *
+				 * Not a deprecation candidate against edac_view_frontend_highlighter - see
+				 * the fuller note at admin/class-frontend-highlight.php::init_hooks().
+				 *
+				 * @since 1.14.0
+				 *
+				 * @param bool $visibility The visibility of the frontend highlighter. Default is false, return true to show the frontend highlighter.
+				 */
+				! apply_filters( 'edac_filter_frontend_highlighter_visibility', false ) &&
+				! (
+					function_exists( 'edac_user_can_use_frontend_highlighter' ) &&
+					edac_user_can_use_frontend_highlighter() &&
+					current_user_can( 'read_post', $post_id ) &&
+					! post_password_required( $post_id )
+				)
+			)
+		) {
+			return;
+		}
+
+
+		// Don't load if this pagetype is not setup to be scanned.
+		$post_types        = Settings::get_scannable_post_types();
+		$current_post_type = get_post_type( $post_id );
+		$active            = ( is_array( $post_types ) && in_array( $current_post_type, $post_types, true ) );
+
+
+		if ( $active ) {
+
+
+			wp_enqueue_style( 'edac-frontend-highlighter-app', plugin_dir_url( EDAC_PLUGIN_FILE ) . 'build/css/frontendHighlighterApp.css', false, EDAC_VERSION, 'all' );
+			wp_enqueue_script( 'edac-frontend-highlighter-app', plugin_dir_url( EDAC_PLUGIN_FILE ) . 'build/frontendHighlighterApp.bundle.js', false, EDAC_VERSION, false );
+
+			wp_localize_script(
+				'edac-frontend-highlighter-app',
+				'edacFrontendHighlighterApp',
+				[
+					'postID'           => $post_id,
+					'nonce'            => wp_create_nonce( 'frontend-highlighter' ),
+					'restNonce'        => is_user_logged_in() ? wp_create_nonce( 'wp_rest' ) : '',
+					'userCanFix'       => current_user_can( apply_filters( 'edac_filter_settings_capability', 'manage_options' ) ),
+					'isPro'            => edac_is_pro(),
+					'userCanEdit'      => current_user_can( 'edit_post', $post_id ),
+					'edacUrl'          => esc_url_raw( get_site_url() ),
+					'restUrl'          => esc_url_raw( rest_url( 'accessibility-checker/v1' ) ),
+					'fixesRestUrl'     => esc_url_raw( rest_url( 'accessibility-checker/v1' ) ),
+					'ajaxurl'          => admin_url( 'admin-ajax.php' ),
+					'loggedIn'         => is_user_logged_in(),
+					'appCssUrl'        => EDAC_PLUGIN_URL . 'build/css/frontendHighlighterApp.css?ver=' . EDAC_VERSION,
+					'widgetPosition'   => get_option( 'edac_frontend_highlighter_position', 'right' ),
+					'editorLink'       => get_edit_post_link( $post_id ),
+					'scannerBundleUrl' => esc_url_raw( add_query_arg( 'ver', EDAC_VERSION, plugin_dir_url( EDAC_PLUGIN_FILE ) . 'build/pageScanner.bundle.js' ) ),
+					'adminThemeColor'  => self::get_admin_theme_color(),
+					'landmarkTypes'    => edac_get_landmark_types(),
+				]
+			);
+
+			wp_set_script_translations( 'edac-frontend-highlighter-app', 'accessibility-checker', plugin_dir_path( EDAC_PLUGIN_FILE ) . 'languages' );
+
+		}
+	}
+}

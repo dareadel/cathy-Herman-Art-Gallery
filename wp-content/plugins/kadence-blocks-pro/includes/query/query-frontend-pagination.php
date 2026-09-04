@@ -103,8 +103,8 @@ class Query_Frontend_Pagination {
 					'mid_size'           => 1,
 					'prev_text'          => _x( 'Previous', 'previous set of posts', 'kadence-blocks-pro' ),
 					'next_text'          => _x( 'Next', 'next set of posts', 'kadence-blocks-pro' ),
-					'screen_reader_text' => __( 'Posts navigation', 'kadence-blocks-pro' ),
-					'aria_label'         => __( 'Posts', 'kadence-blocks-pro' ),
+					'screen_reader_text' => __( 'Posts pagination', 'kadence-blocks-pro' ),
+					'aria_label'         => __( 'Posts pagination', 'kadence-blocks-pro' ),
 					'class'              => 'pagination',
 				)
 			);
@@ -118,8 +118,8 @@ class Query_Frontend_Pagination {
 			 *     Optional. Default pagination arguments, see paginate_links().
 			 *
 			 *     @type string $screen_reader_text Screen reader text for navigation element.
-			 *                                      Default 'Posts navigation'.
-			 *     @type string $aria_label         ARIA label text for the nav element. Default 'Posts'.
+			 *                                      Default 'Posts pagination'.
+			 *     @type string $aria_label         ARIA label text for the nav element. Default 'Posts pagination'.
 			 *     @type string $class              Custom class for the nav element. Default 'pagination'.
 			 * }
 			 */
@@ -202,7 +202,7 @@ class Query_Frontend_Pagination {
 
 		if ( $args['prev_next'] && $current && 1 < $current ) {
 			$page_links[] = sprintf(
-				'<a class="prev page-numbers" href="#" data-page="%s">%s</a>',
+				'<a class="prev page-numbers" href="#" data-page="%s" aria-label="%s">%s</a>',
 				/**
 				 * Filters the paginated links for the given archive pages.
 				 *
@@ -211,6 +211,7 @@ class Query_Frontend_Pagination {
 				 * @param string $link The paginated link URL.
 				 */
 				apply_filters( 'paginate_links', $current - 1 ),
+				esc_attr( self::get_direction_aria_label( $args['prev_text'], $current - 1 ) ),
 				$args['prev_text']
 			);
 		}
@@ -226,9 +227,10 @@ class Query_Frontend_Pagination {
 				$dots = true;
 			} elseif ( $args['show_all'] || ( $n <= $end_size || ( $current && $n >= $current - $mid_size && $n <= $current + $mid_size ) || $n > $total - $end_size ) ) {
 					$page_links[] = sprintf(
-						'<a class="page-numbers" href="#" data-page="%s">%s</a>',
+						'<a class="page-numbers" href="#" data-page="%s" aria-label="%s">%s</a>',
 						/** This filter is documented in wp-includes/general-template.php */
 						apply_filters( 'paginate_links', $n ),
+						esc_attr( self::get_page_aria_label( $n ) ),
 						$args['before_page_number'] . number_format_i18n( $n ) . $args['after_page_number']
 					);
 
@@ -242,9 +244,10 @@ class Query_Frontend_Pagination {
 
 		if ( $args['prev_next'] && $current && $current < $total ) {
 			$page_links[] = sprintf(
-				'<a class="next page-numbers" href="#" data-page="%s">%s</a>',
+				'<a class="next page-numbers" href="#" data-page="%s" aria-label="%s">%s</a>',
 				/** This filter is documented in wp-includes/general-template.php */
 				apply_filters( 'paginate_links', $current + 1 ),
+				esc_attr( self::get_direction_aria_label( $args['next_text'], $current + 1 ) ),
 				$args['next_text']
 			);
 		}
@@ -320,5 +323,47 @@ class Query_Frontend_Pagination {
 		$template = apply_filters( 'navigation_markup_template', $template, $css_class );
 
 		return sprintf( $template, sanitize_html_class( $css_class ), esc_html( $screen_reader_text ), $links, esc_attr( $aria_label ) );
+	}
+
+	/**
+	 * Get the accessible name for a numbered pagination link.
+	 *
+	 * These links carry a placeholder href because the script swaps the results in, so the page
+	 * number is the only context available and has to come from the name itself.
+	 *
+	 * @since TBD
+	 *
+	 * @param int $page The page the link leads to.
+	 *
+	 * @return string The accessible name, such as 'Page 2'.
+	 */
+	private static function get_page_aria_label( int $page ): string {
+		/* translators: %s: Page number. */
+		return sprintf( __( 'Page %s', 'kadence-blocks-pro' ), number_format_i18n( $page ) );
+	}
+
+	/**
+	 * Get the accessible name for a previous or next pagination link.
+	 *
+	 * The rendered label is kept at the front of the name so it still matches the visible text,
+	 * which an author can change and which is an icon title in icon mode. A label that renders
+	 * to nothing falls back to the page number so the link is never left unnamed.
+	 *
+	 * @since TBD
+	 *
+	 * @param string $label The rendered label for the link.
+	 * @param int    $page  The page the link leads to.
+	 *
+	 * @return string The accessible name, such as 'Previous, page 2'.
+	 */
+	private static function get_direction_aria_label( string $label, int $page ): string {
+		$text = trim( wp_strip_all_tags( $label ) );
+
+		if ( '' === $text ) {
+			return self::get_page_aria_label( $page );
+		}
+
+		/* translators: 1: Visible label of the link, such as Previous. 2: Page number. */
+		return sprintf( __( '%1$s, page %2$s', 'kadence-blocks-pro' ), $text, number_format_i18n( $page ) );
 	}
 }

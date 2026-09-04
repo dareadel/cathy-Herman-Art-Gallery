@@ -1,0 +1,145 @@
+<?php
+/**
+ * Class file for the Accessibility Checker plugin.
+ *
+ * @package Accessibility_Checker
+ */
+
+namespace EDAC\Admin;
+
+use EDAC\Admin\SiteHealth\Information;
+use EDAC\Admin\SiteHealth\Checks;
+use EDAC\Admin\Purge_Post_Data;
+use EDAC\Admin\Post_Save;
+use EqualizeDigital\AccessibilityChecker\Admin\Upgrade_Promotion;
+use EqualizeDigital\AccessibilityChecker\Admin\Admin_Footer_Text;
+use EqualizeDigital\AccessibilityChecker\Admin\Activation_Redirect;
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+/**
+ * Admin handling class.
+ */
+class Admin {
+
+	/**
+	 * Meta boxes instance.
+	 *
+	 * @since 1.10.0
+	 *
+	 * @var Meta_Boxes
+	 */
+	private Meta_Boxes $meta_boxes;
+
+	/**
+	 * Class constructor for injecting dependencies.
+	 *
+	 * @param Meta_Boxes $meta_boxes Meta boxes instance.
+	 */
+	public function __construct( Meta_Boxes $meta_boxes ) {
+		$this->meta_boxes = $meta_boxes;
+	}
+
+	/**
+	 * Initialize.
+	 *
+	 * @return void
+	 */
+	public function init(): void {
+
+		$update_database = new Update_Database();
+		$update_database->init_hooks();
+
+		add_action( 'admin_enqueue_scripts', [ 'EDAC\Admin\Enqueue_Admin', 'enqueue' ] );
+		add_action( 'enqueue_block_editor_assets', [ 'EDAC\Admin\Enqueue_Admin', 'maybe_enqueue_sr_only_format' ] );
+		add_filter( 'block_editor_settings_all', [ 'EDAC\Admin\Enqueue_Admin', 'maybe_inject_sr_only_editor_styles' ] );
+		add_action( 'wp_trash_post', [ Purge_Post_Data::class, 'delete_post' ] );
+		add_action( 'save_post', [ Post_Save::class, 'delete_issue_data_on_post_trashing' ], 10, 3 );
+		add_filter( 'edac_filter_generate_link_type_ref', [ $this, 'add_ref_param_to_links' ], 5, 1 );
+
+		$plugin_action_links = new Plugin_Action_Links();
+		$plugin_action_links->init_hooks();
+
+		$admin_notices = new Admin_Notices();
+		$admin_notices->init_hooks();
+
+		$widgets = new Widgets();
+		$widgets->init_hooks();
+
+		$site_health_info = new Information();
+		$site_health_info->init_hooks();
+
+		$site_health_checks = new Checks();
+		$site_health_checks->init_hooks();
+
+		$upgrade_promotion = new Upgrade_Promotion();
+		$upgrade_promotion->init();
+
+		$plugin_row_meta = new Plugin_Row_Meta();
+		$plugin_row_meta->init_hooks();
+
+		$admin_footer_text = new Admin_Footer_Text();
+		$admin_footer_text->init();
+
+		$activation_redirect = new Activation_Redirect();
+		$activation_redirect->init();
+
+		$this->init_ajax();
+
+		$this->meta_boxes->init_hooks();
+
+		add_filter( 'admin_body_class', [ $this, 'sr_only_admin_body_class' ] );
+	}
+
+	/**
+	 * Adds the sr-only-show-always body class when the user has enabled always-show.
+	 *
+	 * @param string $classes The current admin body classes.
+	 * @return string
+	 */
+	public function sr_only_admin_body_class( string $classes ): string {
+		if ( ! get_user_meta( get_current_user_id(), 'show_sr_text_in_editor', true ) ) {
+			return $classes;
+		}
+
+		$classes = trim( $classes );
+		if ( false !== strpos( " {$classes} ", ' sr-only-show-always ' ) ) {
+			return $classes;
+		}
+
+		return trim( $classes . ' sr-only-show-always' );
+	}
+
+	/**
+	 * Initialize ajax.
+	 *
+	 * @return void
+	 */
+	private function init_ajax(): void {
+		if ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) {
+			return;
+		}
+
+		$ajax = new Ajax();
+		$ajax->init_hooks();
+
+		$frontend_highlight = new Frontend_Highlight();
+		$frontend_highlight->init_hooks();
+	}
+
+	/**
+	 * Add ref param in links that are used through the plugin link helpers.
+	 *
+	 * @param string $ref Ref param.
+	 * @return string
+	 */
+	public function add_ref_param_to_links( string $ref ): string {
+		if ( defined( 'EDAC_REF_PARAM' ) && ! empty( EDAC_REF_PARAM ) ) {
+			return EDAC_REF_PARAM;
+		} else {
+			return $ref;
+		}
+	}
+}

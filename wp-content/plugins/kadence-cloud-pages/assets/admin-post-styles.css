@@ -1,0 +1,16 @@
+.find-box {
+    width: 100%;
+    max-width: 900px;
+    transform: translate(-50%, 0px);
+    margin: 0;
+}
+.cmb-row.cmb-type-post-search-text.cmb-repeat-group-field {
+    padding: 5px 0;
+}
+.cmb-row.cmb-type-post-search-text.cmb-repeat-group-field .cmb-th label {
+    line-height: 50px;
+    padding: 0;
+}
+.cmb-repeatable-group .cmb-row.cmb-remove-field-row {
+    padding: 5px 0;
+}

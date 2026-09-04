@@ -1,0 +1,35 @@
+# Copyright (C) 2023 Kadence WP
+# This file is distributed under the GPL2.
+msgid ""
+msgstr ""
+"Project-Id-Version: Kadence Cloud - SureCart Licensing 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/kadence-cloud-surecart-license\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2023-01-13T23:51:17+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.7.1\n"
+"X-Domain: kadence-cloud-surecart-license\n"
+
+#. Plugin Name of the plugin
+msgid "Kadence Cloud - SureCart Licensing"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "https://www.kadencewp.com/kadence-cloud/"
+msgstr ""
+
+#. Description of the plugin
+msgid "Extends the licensing to work with SureCart."
+msgstr ""
+
+#. Author of the plugin
+msgid "Kadence WP"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://www.kadencewp.com/"
+msgstr ""
